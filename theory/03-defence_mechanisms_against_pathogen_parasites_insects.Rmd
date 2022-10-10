@@ -1,0 +1,87 @@
+---
+title: "Defence mechanisms against pathogens, parasites, insects"
+author: |
+  | Deependra Dhakal
+  | Assistant Professor
+  | Agriculture and Forestry University
+  | \textit{ddhakal.rookie@gmail.com}
+  | \url{https://rookie.rbind.io}
+output: 
+  binb::monash:
+    toc: true
+    keep_tex: true
+    slide_level: 2
+    includes:
+      in_header: beamer_header_template.tex
+colortheme: monashwhite
+outertheme: smoothtree
+innertheme: rounded
+innercolortheme: rose
+outercolortheme: whale
+linkcolor: red
+urlcolor: lightgrayd
+titlepage: agrobacterium-transformation.png
+titlefontsize: 18pt # breaks custom \lineskip
+fontsize: 11pt
+classoption: "aspectratio=169" # "compressed"
+bibliography: [./../bibliographies.bib]
+header-includes: 
+  - \AtBeginSubsection{}
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+require(tidyverse)
+set.seed(453)
+# invalidate cache when the package version changes
+knitr::opts_chunk$set(tidy = FALSE, echo = FALSE, 
+                  message = FALSE, warning = FALSE,
+                  out.width = "45%", cache = TRUE, 
+                  dev.args=list(bg=grey(0.9), pointsize=11))
+options(knitr.table.format = "latex")
+options(knitr.kable.NA = "", digits = 2)
+options(kableExtra.latex.load_packages = FALSE)
+# Beamer cheatsheet can be found at:
+# http://www.cpt.univ-mrs.fr/~masson/latex/Beamer-appearance-cheat-sheet.pdf
+# All beamer themes and colorthemes can be assessed at:
+# https://hartwork.org/beamer-theme-matrix/
+
+# A complete book on biolgy view this link
+# https://github.com/philschatz/biology-book/blob/master/SUMMARY.md
+```
+
+```{r}
+# pdftools::pdf_convert("/home/deependra/ddhakal/000readables/pathology/2009_Encyclopedia of Microbiology_3rd edition.pdf",
+#                       pages = 8, format = "png",
+#                       filenames = "agrobacterium-transformation.png",
+#                       dpi = 250)
+# Overview of agrobacterium tumefaciens infection process. Upon activation of the VirA/VirG two-component signal transduction system by signals released from wounded plant cells, a single-strand transferred DNA (T-DNA) is processed from the Ti plasmid and delivered as a nucleoprotein complex (T-complex) to plant nuclei. Expression of T-DNA genes in the plant result in the loss of cell growth control and tumor formation.
+# refer to text for more
+```
+
+# Defense mechanisms against pathogens, parasites
+
+## 
+
+- Genetic information (determines the form and function) is encoded as DNA or (exceptionally) RNA.
+  - Nucleus
+  - Mitochondria
+  - Plasmid (autonomously replicating)
+  - Chloroplasts
+- A gene (in general) is characterized by:
+  - 100-500 codon triplets
+  - Coding and and non-coding region
+  - Protein or RNA as code product
+- Genetic processes
+  - Replication
+  - Transcription
+  - Translation
+  - Regulatory elements -- promoters, enhancers, silencers or terminators
+
+# Gene for gene hypothesis
+
+# Defense mechanisms against insects
+
+# Bibliography
+
+## References

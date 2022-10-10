@@ -1,0 +1,71 @@
+---
+title: "Introduction to Resistance Breeding"
+author: |
+  | Deependra Dhakal
+  | Agriculture and Forestry University
+  | \textit{ddhakal.rookie@gmail.com}
+  | \url{https://rookie.rbind.io}
+output: 
+  binb::monash:
+    toc: true
+    keep_tex: true
+    slide_level: 2
+    includes:
+      in_header: beamer_header_template.tex
+colortheme: monashwhite
+outertheme: smoothtree
+innertheme: rounded
+innercolortheme: rose
+outercolortheme: whale
+linkcolor: red
+urlcolor: lightgrayd
+titlepage: 
+titlefontsize: 18pt # breaks custom \lineskip
+fontsize: 11pt
+classoption: "aspectratio=169" # "compressed"
+bibliography: [./../bibliographies.bib]
+header-includes: 
+  - \AtBeginSubsection{}
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+require(tidyverse)
+set.seed(453)
+# invalidate cache when the package version changes
+knitr::opts_chunk$set(tidy = FALSE, echo = FALSE, 
+                  message = FALSE, warning = FALSE,
+                  out.width = "45%", cache = TRUE, 
+                  dev.args=list(bg=grey(0.9), pointsize=11))
+options(knitr.table.format = "latex")
+options(knitr.kable.NA = "", digits = 2)
+options(kableExtra.latex.load_packages = FALSE)
+# Beamer cheatsheet can be found at:
+# http://www.cpt.univ-mrs.fr/~masson/latex/Beamer-appearance-cheat-sheet.pdf
+# All beamer themes and colorthemes can be assessed at:
+# https://hartwork.org/beamer-theme-matrix/
+
+# A complete book on biolgy view this link
+# https://github.com/philschatz/biology-book/blob/master/SUMMARY.md
+```
+
+# Potential Yield
+
+##
+
+- Biological efficiency of production (expressed as unit of the product per unit of absorbed solar energy, or conveniently as kg/hectare) is a relative measurement and it varies according to the environment, with the cultivar, and especially with its variations.
+- A proper biological index could help plant breeders in obtaining cultivars with better efficiency in using natural resources.
+- Yield potential (a theoretical idea) can be defined as the yield obtained when the cultivar is grown with no environmental restrictions -- with no biotic or abiotic stresses.
+  - soil nutrients and water are not limiting
+  - pests and weeds are effectively controlled
+- Crop yield potential (genetic) is much larger than the biological efficiency per area (recorded yield) owing to several environmental influences and management practices -- collectively called \alert{stresses}.
+
+##
+
+
+
+# Bibliography
+
+## See also
+
+## References

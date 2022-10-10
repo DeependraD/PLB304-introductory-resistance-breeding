@@ -1,0 +1,65 @@
+---
+title: "Breeding for Drought, Cold, Mineral and Heat Stress"
+author: |
+  | Deependra Dhakal
+  | Assistant Professor
+  | Agriculture and Forestry University
+  | \textit{ddhakal.rookie@gmail.com}
+  | \url{https://rookie.rbind.io}
+output: 
+  binb::monash:
+    toc: true
+    keep_tex: true
+    slide_level: 2
+    includes:
+      in_header: beamer_header_template.tex
+colortheme: monashwhite
+outertheme: smoothtree
+innertheme: rounded
+innercolortheme: rose
+outercolortheme: whale
+linkcolor: red
+urlcolor: lightgrayd
+# titlefontsize: 22pt # breaks custom \lineskip
+titlepage:
+fontsize: 11pt
+classoption: "aspectratio=169" # "compressed"
+bibliography: [./../bibliographies.bib]
+header-includes: 
+  - \AtBeginSubsection{}
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+require(tidyverse)
+set.seed(453)
+# invalidate cache when the package version changes
+knitr::opts_chunk$set(tidy = FALSE, echo = FALSE, 
+                  message = FALSE, warning = FALSE,
+                  out.width = "45%", cache = TRUE, 
+                  dev.args=list(bg=grey(0.9), pointsize=11))
+options(knitr.table.format = "latex")
+options(knitr.kable.NA = "", digits = 2)
+options(kableExtra.latex.load_packages = FALSE)
+theme_set(theme_bw())
+```
+
+# Breeding for Drought resistance
+
+# Breeding for Heat resistance
+
+# Breeding for Mineral stresses
+
+# Breeding for Cold resistance
+
+##
+
+- Deficiency diseases in banana:
+  - Phosphorus: Rosetting
+  - Copper: Drooping of leaves
+  - Magnesium: Pink disease
+- Refer to comprehensive crap ag (page 198) for description of role of mineral/nutrients and their deficiencies and toxicities.
+
+# Bibliography
+
+## References

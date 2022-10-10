@@ -1,0 +1,138 @@
+---
+title: "Natural Enemies and their Types"
+author: |
+  | Deependra Dhakal
+  | Agriculture and Forestry University
+  | \textit{ddhakal.rookie@gmail.com}
+  | \url{https://rookie.rbind.io}
+output: 
+  binb::monash:
+    toc: true
+    keep_tex: true
+    slide_level: 2
+    includes:
+      in_header: beamer_header_template.tex
+colortheme: monashwhite
+outertheme: smoothtree
+innertheme: rounded
+innercolortheme: rose
+outercolortheme: whale
+linkcolor: red
+urlcolor: lightgrayd
+titlepage: 
+titlefontsize: 18pt # breaks custom \lineskip
+fontsize: 11pt
+classoption: "aspectratio=169" # "compressed"
+bibliography: [./../bibliographies.bib]
+header-includes: 
+  - \AtBeginSubsection{}
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+require(tidyverse)
+set.seed(453)
+# invalidate cache when the package version changes
+knitr::opts_chunk$set(tidy = FALSE, echo = FALSE, 
+                  message = FALSE, warning = FALSE,
+                  out.width = "45%", cache = TRUE, 
+                  dev.args=list(bg=grey(0.9), pointsize=11))
+options(knitr.table.format = "latex")
+options(knitr.kable.NA = "", digits = 2)
+options(kableExtra.latex.load_packages = FALSE)
+# Beamer cheatsheet can be found at:
+# http://www.cpt.univ-mrs.fr/~masson/latex/Beamer-appearance-cheat-sheet.pdf
+# All beamer themes and colorthemes can be assessed at:
+# https://hartwork.org/beamer-theme-matrix/
+
+# A complete book on biolgy view this link
+# https://github.com/philschatz/biology-book/blob/master/SUMMARY.md
+```
+
+# Natural Enemy: Classification
+
+##
+
+```{r natural-enemy-classification}
+tribble(
+  ~"Taxonomic group", ~"Enemy group", ~"Effect on plant", 
+  "Virus", "Pathogen", "Disease infection",
+  "Phytoplasma", "Pathogen", "Disease infection",
+  "Fungus", "Pathogen", "Disease infection",
+  "Higher plant", "Parasite", "Infestation",
+  "Nematode", "Parasite", "Infestation",
+  "Insect", "Parasite", "Infestation",
+  "Insect", "Herbivores", "Infestation",
+  "Snail and slug", "Herbivores", "Infestation",
+  "Vertebrate", "Herbivores", "Biting damage"
+) %>% 
+  knitr::kable(booktabs = TRUE, caption = "Taxonomic group of organisms and nature of damage to crops", longtable = TRUE) %>% 
+  kableExtra::kable_styling(latex_options = "striped", font_size = 8)
+```
+
+# Insects
+
+## Biological control
+
+- Natural enemies in field should be conserved with a provision of sheltering and pollen resourceful flowering plants around. 
+
+**Insect predators**
+
+- Insects of the family Coccinellidae feed on Aphids, scale insects and mealy bugs
+  - 2 spotted lady-beetle: _Adalla bipunctata_
+  - 7 spotted lady-beetle: _Coccinella septumpunctata_
+  - 9 spotted lady-beetle: _Coccinella novenpunctata_
+  - Vadalia beetle: _Rodolia cardinalis_
+
+- Mantids prey on smaller insects
+- Syrphid fly predate on maggots and aphids
+- Cicindellidae (Cicindella sexgutata) predate on rice earhead bug
+- Lebellulidae: Naids feed on mosquito larvae
+- Insects of family Chrysopidae feed on Aphids, scales, mealybugs and mites
+- Crabidae
+- Lampyridae
+- Reduvidae
+- _Xanthopimpla predator_ (Ichuenumonidae) predate on pupae of _Chilo partellus_
+
+**Insect parasites**
+
+- _Trichogramma minutum_ (Trichogrammatidae) and _Apantales flavipes_ (Braconidae) lay eggs on larvae of _Chilo partellus_
+- _Tricholyga sorbillans_, _T. bomycis_ (Tachinidae)
+
+**Nematode**: _Neoaplectema carpocarpsae_ parasite of codling moth
+
+**Protozoa**: _Nosema bombycis_, _Farinocystis tribolii_
+
+**Fungi**
+
+- Aspergillus
+- Beauveria
+- Metarhizium anisopliae
+- Spicaria
+- Entomophthora lecanii
+- Entomophthora sphaerosperma
+- Coccus viridis
+
+**Bacterial**
+
+- Bacillus thuringiensis is effective against, _Heliocoverpa armigera_, _Pieries brassicae_, _Hellula undalis_, _Plodia interpunctella_ and _Tribolium confusum_
+
+**Virus**
+
+- NPV (Borrelina virus) is effective against Alfalfa caterpilla, Cabbage loper ( _Trichoplusia ni_), Tobaccoo caterpillar/Beet armyworm ( _Spodoptera litura_, _Spodoptera exigua_), _Heliothis zea_, Diamond back moth ( _Plutella xylostella_).
+- Granulosis virus (Bergoldia virus) is effective against Potato tuber moth ( _Gnoremoschema opercullela_), Codling moth
+
+- _Rhizoctonia solanii_ and _Didymella exitalis_ putrates kills hyphal cells of Ophiobolus graminis (Fungal pathogen of wheat)
+
+
+# Bacterial agents
+
+##
+
+# Fungal hyperparasite
+
+##
+
+# Bibliography
+
+## References
