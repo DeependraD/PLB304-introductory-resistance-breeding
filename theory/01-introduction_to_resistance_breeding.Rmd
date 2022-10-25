@@ -1,7 +1,7 @@
 ---
 title: "Introduction to Resistance Breeding"
 author: |
-  | Deependra Dhakal
+  | \vspace{-0.5cm}Deependra Dhakal
   | Agriculture and Forestry University
   | \textit{ddhakal.rookie@gmail.com}
   | \url{https://rookie.rbind.io}
@@ -9,6 +9,7 @@ output:
   binb::monash:
     toc: true
     keep_tex: true
+    citation_package: natbib
     slide_level: 2
     includes:
       in_header: beamer_header_template.tex
@@ -19,17 +20,20 @@ innercolortheme: rose
 outercolortheme: whale
 linkcolor: red
 urlcolor: lightgrayd
-titlepage: 
-titlefontsize: 18pt # breaks custom \lineskip
+titlepage: genetic_variation_awn_barley.png
+titlefontsize: 20pt # breaks custom \lineskip
+titlecolor: blue
 fontsize: 11pt
 classoption: "aspectratio=169" # "compressed"
 bibliography: [./../bibliographies.bib]
 header-includes: 
   - \AtBeginSubsection{}
+  - \captionsetup{skip=0pt,font=tiny,belowskip=-2pt,aboveskip=0pt}
 ---
 
 ```{r setup, include=FALSE}
 library(knitr)
+Sys.setenv(RSTUDIO_PDFLATEX = Sys.which("latexmk"))
 require(tidyverse)
 set.seed(453)
 # invalidate cache when the package version changes
@@ -53,19 +57,439 @@ options(kableExtra.latex.load_packages = FALSE)
 
 ##
 
+\small
 - Biological efficiency of production (expressed as unit of the product per unit of absorbed solar energy, or conveniently as kg/hectare) is a relative measurement and it varies according to the environment, with the cultivar, and especially with its variations.
 - A proper biological index could help plant breeders in obtaining cultivars with better efficiency in using natural resources.
 - Yield potential (a theoretical idea) can be defined as the yield obtained when the cultivar is grown with no environmental restrictions -- with no biotic or abiotic stresses.
   - soil nutrients and water are not limiting
   - pests and weeds are effectively controlled
 - Crop yield potential (genetic) is much larger than the biological efficiency per area (recorded yield) owing to several environmental influences and management practices -- collectively called \alert{stresses}.
+- Infection or infestation by plant pests and diseases affects \alert{yield} and \alert{end-use quality}
 
 ##
 
+```{r crop-pandemic-history, fig.cap="Major disease outbreaks in the last 150 years and current critical disease challenges. (i) Introduction of the oomycete \\textit{Phytophthora infestans} which causes potato late blight. (ii) The rust fungus \\textit{Hemileia vastatrix} wipes out the coffee crop in Sri-Lanka; the British become tea drinkers. (iii) The vascular fungal pathogen causing Fusarium wilt of banana nearly wipes out the Gros Michel variety; the resistant Cavendish banana is adopted. (iv) The fungus \\textit{Cochliobolus miyabeanus}, which causes Brown spot disease of rice is a factor in the Great Bengal Famine in which 2 million people died of starvation. (v) Bacterial leaf blight or rice (\\textit{Xanthomonas oryzae} pv. \\textit{oryzae}) causes epidemics throughout Southeast Asia with yield losses up to 80\\%. (vi) Witches\' broom caused by the fungus \\textit{Moniliophthora perniciosa} caused losses of upto 75\\% of annual cacao production in Brazil. (vii) The new \\textit{Fusarium} wilt isolate TR4 is identified and threatens Cavendish banana. (viii) Ringspot virus devastates the papaya industry in Hawaii; a GM variety is introduced that resists infection. (ix) A new race of the stem rust fungus \\textit{Puccinia graminis} (UG99) is spreading throughout Africa and Middle East, threatening the world supply of wheat. (x) Asian soybean rust caused by \\textit{Phakopsora pachyrhizi} reaches Brazil, costing growers US \\$2 billion annually in damages and control measures.", out.width="40%"}
+knitr::include_graphics("../images/crop_pandemic_history.png")
+```
+
+##
+
+```{r wheat-blast, fig.cap="Past present and future of Wheat blast. Countries that imported wheat from Brazil in 2016/17 are thought to have received much of the pathogen inoculums.", out.width="86%"}
+knitr::include_graphics("../images/wheat_blast_distribution_due_brazil.jpg")
+```
+
+\footnotesize Note: For more discussion on Wheat blast refer to @ceresini2018wheat.
+
+##
+
+- Development of resistant cultivars involves consideration of the genetic variability of the pest/diseases as well as the variability in resistance (or sometimes tolerance) within the crop species or related group.
+- Durability of resistance is affected by emergence of new races of the disease/pest that are able to overcome existing resistance 
+- Environmental changes (brought about by global warming) also affects the dynamics of plant interactions with pests and diseases and render crops more or less susceptible to biotic stresses, owing to:
+  - changed distribution of phytophagous insects (lepidopterans)
+  - changes in crop and insect phenology synchrony (emergence)
+  - over one-third of the total variance in caterpillar parasitism (activity of natural predators) is explained by variability in precipitation
+
+##
+
+\small
+- Sources of alleles conferring disease resistance have traditionally been landraces and old cultivars/materials kept by small farmers.
+- A range of pests -- ranging upto large foraging mammals -- inflict crop damage, not all of which amenable to resistance breeding
+  - Wheat crop in and around the wildlife protection buffer zones knocked down by a herd of Rhinoceri is hard! to breed for.  
+- For much of 20th century, scientific plant breeding has been successful in first 3 of 4 main objectives:
+  - yield improvement
+  - quality improvement
+  - agronomic suitability improvement
+  - resistance to parasites
+- $\because$ resistance keeps breaking down because of new strains of the parasite and then an endless repetition of resistance failures and a "boom and bust" cycle of cultivar production. 
+
+##
+
+\bcolumns
+\column{0.5\textwidth}
+\bdescription
+\footnotesize
+\item[Crop parasite] Any organism that spends a major part of its life cycle inhabiting on host individual, and obtaining nutrients from that host. i.e., an insect, mite, nematode, parasitic angiosperm (broomrape, witchweed, dodder), or any categories of plant pathogen (fungi, bacteria, virus).
+\item[Host] Crop plant
+\edescription
+
+- Weeds are not parasites -- they are competitors
+
+\column{0.5\textwidth}
+
+```{r strawberry-rust, fig.cap="Rust on mock strawberry (\\textit{Potentilla indica}) caused by \\textit{Phragmidium mexicanum} with urediniospores and teliospores.", out.width="92%"}
+knitr::include_graphics("../images/FCpHrYNWEAIhiv9.jpg")
+```
+
+\ecolumns
+
+## Causes of plant disease epidemics (The Disease Triangle)
+
+```{r disease-triangle, fig.cap="The disease triangle.", out.width="45%"}
+# pdftools::pdf_convert("../literatures/10.1038@s43016-020-0075-0.pdf", format = "png",
+#                       pages = 3, filenames = "../images/disease_triangle.png", dpi = 350)
+knitr::include_graphics("../images/disease_triangle.png")
+```
+
+##
+
+- Infectious disease result from infection caused by plant pathogen.
+- Pathogen can grow and multiply rapidly on diseased plants, and can spread from diseased to healthy plants and cause additional plant to become diseased -- epidemic.
+- A plant parasite is an organism that becomes intimately associated with a plant and multiplies or grows at the expense of the plant (removes nutrients and water from the host) 
+- Parasitism is associated with pathogenicity, i.e., the ability of a pathogen to cause disease, as the ability of the parasite to invade and become established in the host generally results in the development of a diseased condition.
+
+##
+
+- Only a few members of a few groups of living organisms can parasitize plants.
+- Some parasites are biotrophs (obligate parasites, can grow and reproduce in nature only in living hosts)
+  - viruses
+  - viroids
+  - mollicutes
+  - fastidious bacteria
+  - nematodes
+  - protozoa
+  - downy mildew, powdery mildew and rust fungi
+- Others are semi-biotrophs (facultative saprophytes), necrotrophs
+- Obligate and nonobligate parasites generally differ in the ways in which they attack their host plants and procure their nutrients from the host
+
+## Abundance and susceptibility of the host
+
+\small
+- For most plant disease (particularly foliar) caused by fungi, $\big\Uparrow$ host density $\sim$ disease $\big\Uparrow$ epidemics.
+- $\big\Uparrow$ the pathogen spores travel from infected source plants, $\big\Downarrow$ concentrated will be the innoculum load that reaches the nearest uninfected plants.
+- $\big\Uparrow$ canopy density $~$ $\big\Uparrow$ humidity, the condition conducive for initial stages of infection.
+- Factors contributing to the loss of crop production stability relate to:
+  - $\big\Uparrow$ field aggregation and size
+  - $\big\Uparrow$ host plant density ($\big\Uparrow$ fertilizer use)
+  - $\big\Uparrow$ crop species uniformity through specialization
+  - $\big\Uparrow$ of genetic uniformity at the cultivar level
+  - $\big\Uparrow$ reliance on race-specific resistance and neglect of resistance to currently less-damaging disease
+- $\big\Uparrow$ international exchange of seed and planting stock has contributed to the dispersal of pathogens into newer parts of world
+- Shorter crop duration $\big\Uparrow$ pathogen innoculum survival from one crop cycle to the next.
+
+## Environmental factors
+
+\small
+- Each pathogen favor a specific set of environmental conditions for disease development
+- Mostly, soil-borne pathogens are most damaging in wet soil
+- Foliar diseases such as wheat stem rust, thrive in hot weather while other, such as wheat stripe rust, require cool temperatures.
+- Nearly all foliar pathogens (with exclusion of powdery mildew fungi) require high moisture for their initial growth on leaf or stem surface before they penetrate the interior regions.
+- Breeding for disease resistance involves exposing breeding populations to induced epidemics or to natural epidemics in known "hot spots".
+- Breeder's objective is to optimize the pathogen and environmental sides of the disease triangle to provide consistent epidemics of sufficient severity to clearly damage susceptible breeding lines without also destroying lines with useful levels of resistance.
+- Three sides of the triangle as main effects as well as interactions between them need to be considered.
+
+##
+
+- Seedling blight in winter wheat is most severe at soil temperatures of \SIrange{20}{28}{\celsius} and does not occur below \SI{12}{\celsius}.
+- In maize, seedling blight does not occur at soil temperatures above \SI{24}{\celsius} and is most severe at \SIrange{8}{20}{\celsius}.
+- $\because$ Wheat, as cool season crop, is adapted to rapid seedling development in cool soils, whereas maize is a warm season crop adapted to rapid seedling development in warm soils.
+  - Breeding for reduced seedling blight in early planted maize entails selection for lines with greater cold tolerance and faster germination in cool soils.
+- Susceptibility of upland and lowland ecotypes to rice blast.
+- H x E interaction also are prominent in many diseases caused by biotrophic pathogens, such as the rust fungi, that are highly specialized parasites.
+
+##
+
+- Pathogen x Environment interactions are encountered in field plot tests as:
+  - non-uniform distribution of soilborne pathogens due to variable moisture regimes at low and high spots of the field and due to difference in water-holding capacity
+  - vector borne virus may be more prominent at the edges of field (edge effect)
+- Collections of \textit{H. spontaneum} from hot, dry regions of Israel were more susceptible to leaf rust and powdery mildew than were collections from other areas of Israel where rust and mildew were more prevalent.
+  - disease resistance tend to be lost from plant populations when there is no disease pressure to maintain selection for resistance
+
+<!-- Seedling blight of wheat and maize are a classic example of the role of host x environment interactions in disease development. The soilborne fungi that are commonly involved in seedling blights are weak pathogens that do not seriously damage the host plants except under conditions in which seedling growth is slow and the development of defensive morphological barriers to root and hypocotyl infection, termed "hardening off", is delayed. The same soilborne fungi can cause seedling blight in both wheat and maize, but the disease occur under different environmental conditions for the two crops. -->
+
+<!-- High silicon concentration in epidermal cells of rice foliage is related to reduced disease severity, apparently because silicic acid condenses into a glass-like coating of polymerized SiO2 on epidermal surfaces that impedes pathogen penetration. The highly weathered upland soils in the tropics contain lower silicon concentrations than the rich alluvial soils of the bottom lands. Ecotypes of rice adapted to lowlands are generally more susceptible to rice blast than the upland rice ecotypes when grown side by side in upland plots without supplemental silicon applied to soil. The reason for this is that the upland ecotypes have evolved more efficient mechanisms of silicon uptake from the silicon-deficient soils of the uplands and, thus, are able to form a stronger barrier against pathogen peneration. -->
+
+<!-- The partial resistance of the wheat cultivars Gaines and Nugaines to stripe rust caused by Puccinia striiformis is effective during the summer months in the Pacific Northwest region of the US. This resistance is referred to as high-temperature adult plant resistance. Although HTAP resistance does not protect winter wheat plants during cool spring weather, it becomes effective during early summer in nearly all years before the stripe rust epidemics have progressed far enough to cause significant yield losses. The HTAP resistance of Gaines and Nugaines wheat has remained effective for more than 40 years. -->
+
+# Resistance types
+
+## Aspects relating to breeding strategy
+
+- Inheritance of disease (monogenic or polygenic)
+- Effectiveness (complete or partial)
+- Specificity (race specific or general)
+
+## Inheritance
+
+\small
+- \alert{Monogenic} resistance due to a single major gene. It can be recognized with certainty and progeny from a cross can be scored as either having or lacking that particular gene.
+- May not be completely effective, so major genes do not necessarily render plants immune from infection.
+- In cereal rust diseases several Infection Types (IT) are regarded as resistant reaction
+  - (IT0) reaction show no macroscopic evidence of pathogen attack (immunity)
+  - (IT;) reaction designated as fleck do not allow pathogen sporulation but do show visible evidence of pathogen-induced death of host tissue
+  - (IT1) reaction  is conditioned by genes when very small pustules surrounded by a ring of necrotic tissue appear
+  - (IT2) reaction is characterized by moderately small pustules surrounded by chlorotic halo
+- Lr34 gene for leaf rust resistance in wheat only manifests with moderate level of adult plant resistance, and is characterized by smaller pustules with less sporulation than on fully susceptible plants -- hence not a gene for complete resistance.
+
+## Effectiveness and specificity
+
+\small
+- Some cultivars with accumulation of many genes for partial resistance may remain almost completely free of disease under conditions in which fully susceptible cultivars are heavily infected.
+- For practical purposes, such form of partial resistance may be said to show nearly complete resistance, even if it has no genes for complete resistance.
+- Race specific versus non-specific resistance addresses the central issue of durability of disease resistance in crops.
+- @vanderplank2012disease divided resistance into 2 types (in epidemiological terms):
+  - Vertical (race specific)
+  - Horizontal (race non-specific)
+- Vertical resistance reduces initial inoculum in an epidemic by screening out avirulent races in the pathogen population but has no effect on the rate of increase of the virulent races in the epidemic.
+- Horizontal resistance reduces the rate of pathogen increase by being at least partially effective against all races.
+
+##
+
+\small
+- @simonds1985plant expanded the classification of resistance into 4 types:
+  \begin{enumerate}
+  \footnotesize
+  \item Vertical resistance as defined by Vanderplank,
+  \item Pathogen non-specific major gene resistance to cover those cases of monogenic resistance that are known to lack race specificity,
+    \begin{itemize}
+    \scriptsize
+    \item Resistance in maize to \textit{Cochliobolus heterostrophus} due to single gene (a gene for sensitivity of the host to patho-toxin). Pathogens lacking the ability to produce the toxin are avirulent and host plants without the gene for toxin sensitivity are resistant. No alternative form of the toxin gene (HC-toxin) has been found that is not inactivated by the host gene product.
+    \item In cultivars of cabbage, single genes for resistance to cabbage yellow disease caused by soilborne \textit{Fusarium oxysporum} f. \textit{conglutinans} haven proven durable.
+    \end{itemize}
+  \item Horizontal polygenic resistance,
+  \item Interaction resistance, which relies on use of mixed populations of host lines with different genes for vertical resistance to avoid rapid selection of races virulent to any single resistance gene in mixture.
+  \end{enumerate}
+- Induced resistance, even if its effects are only local, may substantially reduce the ability of virulent races to infect the \alert{same} plants.
+- Simmonds suggested that most plants have some level of horizontal polygenic resistance against most, if not all, of their diseases.
+
+## Qualitative and quantitative resistance
+
+\footnotesize
+- Terms are used to distinguish both the phenotypic expression of resistance and the type of inheritance associated.
+- Resistance genes ($R$-genes) underlying qualitative resistance tend to provide complete or near-complete resistance.
+- Studies on major genes have provided understanding of pathogen recognition and response.
+- $R$ genes typically show dominant phenotypes and mostly encode proteins involved in pathogen recognition.
+- Recessive resistance may be caused by loss-of-function variants of susceptibility conferring genes ($S$-genes)
+- Quantitative disease resistance (QDR) shows incomplete or partial phenotype and is controlled by multiple genes of small effects.
+  - helps characterize genetic architecture of resistance in different pathosystems
+- A cross between a line with strong QDR and one with weak QDR typically shows a continuum of phenotypic variation.
+- Recent studes on genes conditioning QDR have shown that genes resembling R-genes can have incomplete effects and can be identified as QTLs in mapping studies.
+- Concepts of qualitative and quantitative resistance may not be dichotomous, afterall.
+
+## 
+
+- Studies of plant immunity in model systems ( _Arabidopsis thaliana_, tomato and rice) have revealed 2 main mechanisms for immune response:
+  - Pathogen-associated molecular pattern (PAMP)-triggered immunity (PTI) known as basal resistance -- contributes to quantitative resistance
+  - Effector-triggered immunity (ETI) -- forms basis of qualitative resistance 
+- PTI is broad-spectrum resistance triggered in response to conserved pathogen features as recognized at plant cell surface via conserved pattern receptors (PRRs), which are typically membrane-localized receptor-like kinases (RLKs) or wall-associated kinases (WAKs).
+  - PTI is (probably) a component of non-host resistance\footnote[frame]{A phenomenon whereby most plants are resistant to most microbial pathogens.}
+
+##
+
+\bcolumns
+\column{0.6\textwidth}
+
+- ETI is activated when R-proteins (encoded by $R$-genes) recognize their corresponding pathogenic effector protein.
+- R-proteins (structural) are typically encoded by nucleotide-binding domain leucine-rich repeat containing (NLR) genes, and most R-genes encode cytosolic NLR proteins.
+- Some R-genes encode detoxification enzymes, while other encode WAKs.
+- ETI is often manifested as a hypersensitive response (HR): that is, rapid cell death localized at the point of pathogen penetration.
+- HR is effective against biotrophic pathogens but increases susceptibility to necrotrophic diseases.
+
+\column{0.4\textwidth}
+
+```{r qualitative-res, out.width="55%", fig.cap="Qualitative resistance"}
+# pdftools::pdf_convert("../literatures/nelson2017.pdf", pages = 3, dpi = 360, filenames = "../images/resistance_quant_qual.png", format = "png")
+knitr::include_graphics("../images/qualitative_resistance.PNG")
+```
+
+```{r quantitative-res, out.width="55%", fig.cap="Quantitative resistance"}
+# pdftools::pdf_convert("../literatures/nelson2017.pdf", pages = 3, dpi = 360, filenames = "../images/resistance_quant_qual.png", format = "png")
+knitr::include_graphics("../images/quantitative_resistance.PNG")
+```
+
+\ecolumns
+
+## Hypersensitive resistance
+
+\bcolumns
+\column{0.65\textwidth}
+\begin{description}
+\item[Hypersensitive reaction] Host in which intial contacts in incompatible combinations of avirulent pathogen with resistant host trigger rapid death of the contacted host cells with release of metabolites injurious to the pathogen.
+\end{description}
+
+\small
+- The challenge with polygenic nonspecific resistance is to recognize the resistance as non-specific when it occurs in breeding population.
+- Best documented cases of race-specific resistance are based on hypersensitive reaction.
+- For diseases caused by biotrophic pathogens, hypersensitive resistance is generally of race-specific type.
+
+<!-- It is unlikely that biotrophic pathogens could have survived if they had not evolved races that can avoid inducing hypersensitive responses in at least some genotypes of their hosts. -->
+
+\column{0.35\textwidth}
+
+```{r hypersensitive-resistance, out.width="70%"}
+knitr::include_graphics("../images/hypersensitive_reaction.jpg")
+```
+
+\ecolumns
+
+##
+
+- R-genes have typically been identified by approaches including: 
+  \begin{itemize}
+  \footnotesize
+  \item fine-mapping and positional cloning,
+  \item mutation screening and \hspace{1.5cm}
+  \smash{\raisebox{.25\dimexpr2\baselineskip+1\itemsep+2\parskip}{$\left.\rule{0pt}{.6\dimexpr2\baselineskip+1\itemsep+2\parskip}\right\}$\ \parbox{4cm}{Qualitative resistance}}}
+  \item systematic identification and testing of NLR genes (using homology)
+  \end{itemize}
+- Identification and analysis of R-genes has proceeded more quickly than that for genes conditioning minor effects, hence R-cloning is easier than QTL cloning.
+- One strategy in identification of R-genes that are likely to be effective for resistance breeding entails sequencing the existing pathogen population to characterize the relevant effectors and then deploying R-genes that recognize those effectors.
+  - using combination of bioinformatic and functional approaches
+- R-genes are extremely specific and provide resistance against one or few strain/races of a particular pathogen.
+  \begin{itemize}
+  \footnotesize
+  \item R-genes (especially NLR genes) are found in tightly linked clusters
+  \item Clustering reflects and allows evolutionary diversification of recognition specificities or R-genes \cite{hulbert2001resistance}
+  \end{itemize}
 
 
-# Bibliography
+##
 
-## See also
+\small
+- Most studies on quantitative resistance have focused on the underlying genetic architecture, which is relevant for crop improvement rather than on the identity and mechanisms of individual genes
+  - linkage analysis
+  - GWAS (better resolution of candidate genes for validation\footnote[frame]{Validation of gene entails transformation or mutatgenesis experiments to confirm the presence/absence})
+- Mapping studies have shown that resistance is often a polygenic trait -- that produces a continuous distribution of phenotypes in a biparental cross.
+- Mapping studies (synthesized study) for disease have:
+  \bitemize
+  \footnotesize
+  \item Rice $\longrightarrow$ 16 studies $\longrightarrow$ 94 QRLs $\longrightarrow$ cover more than half the genome
+  \item Maize $\longrightarrow$ 50 studies $\longrightarrow$ 437 QRLs cover 89% of the genome
+  \item This is still underestimation of true number of loci
+  \eitemize
+- Underlying genetic mechanism for most QRLs is unknown, however,
+  \bitemize
+  \footnotesize
+  \item Many of the genes are similar in sequence to NLR genes, PRR genes or defence genes that can be controlled by these recognition-related genes
+  \item In some cases, multiple linked genes (such as groups of functionally related defence genes involved in secretory process and cell wall reinforcement) have been shown to underlie a single QRL
+  \eitemize
 
-## References
+##
+
+```{r quantitative-qualitative-segregation, fig.cap="In a segregating population, a dominant major gene conditioning qualitative resistance segregates in a 3:1 ratio, while multiple genes of small effect contribute to continuous phenotypic variation for quantitative resistance.", out.width="99%"}
+knitr::include_graphics("../images/qualitative_quantitative_segregation.PNG")
+```
+
+##
+
+```{r quantitative-candidate-genes, out.width="70%", fig.cap="Example of different types of causal and candidate genes that contribute to quantitative resistance. \\cite{nelson2018navigating}."}
+# pdftools::pdf_convert("../literatures/nelson2017.pdf", pages = 5, dpi = 420, filenames = "../images/quantitative_candidate.png", format = "png")
+knitr::include_graphics("../images/quantitative_candidate.png")
+```
+
+# Disease resistance mechanisms
+
+## Disease escape or avoidance
+
+- May not even a true resistance mechanism
+  - maturing plants may complete their growth and produce seeds before epidemics of foliar diseases have progressed far enough to cause significant damage
+- Wheat stem rust epidemics in US begin with overwintered infections in winter wheat plants near the Gulf Coast. \textit{P. graminis} develops best in warm weather, so stem rust epidemics develop slowly during the spring. One reason for the decline of stem rust damage in the Central Plains states of Oklahoma and Kansas was the switch to earlier maturing winter wheat cultivars in those states in the 1930s and 1940s.
+- Reduction in the population density of host plants
+
+## Morphological resistance
+
+- Morphological feature  of plants enabling them to avoid infection
+- Tuber rot in stored potatoes is initiated primarily in wounds to the tubers incurred during harvesting/transport. Rapid healing by development of a suberized layer over the wounded tissue is considered most critical aspect of resistance therein.
+- Floral development is important in the resistance of wheat to ergot caused by \textit{Claviceps purpurea}.
+  - pathogen invades the ovules by way of stigmas of the rye florets
+  - $\because$ rye is typically cross-pollinated, the unfertilized stigmas are exposed to ascospores
+  - however, once ovules are fertilized, stigmas are no longer receptive to infection
+  - $\because$ wheat is self-pollinated, stigmas are no longer receptive to infection by the time they become exposed to pathogen spores in air
+  - male sterile lines of wheat tend to be infected heavily as rye by ergot! 
+
+##
+
+- Failure of anther extrusion in barley cultivars leads to partial escape from Fusarium head blight.
+- Covering of leaf epidermis with hairs or waxes that repel water
+- Upright geometry of foliage cause water droplets to roll off the leaves allowing them to dry rapidly
+- Plants unattractive to potential vectors escape infection even if they are susceptible to the vector-borne pathogen
+- Rice cultivars selected for more efficient silicon uptake have morphological resistance to \textit{M. grisea} (mentioned earlier).
+- In wheat stem rust caused by \textit{P. graminis}:
+  - seedlings exhibit no morphological resistance
+  - adult plants allow growth of pathogen only in the chlorophyllous collenchyma bundles of stems
+  - cultivars with narrow, isolated strands of collenchyma bundles separated by broad bands of sclerenchyma are partially resistant to stem rust in adult plants  
+  
+## Chemical barrier to invasion
+
+- Chemical defense compounds with general antibiotic properties:
+  - tannins
+  - phenolic compounds
+  - dienes
+  - saponins
+  - proteases
+  - hydrolytic enzymes
+- Seeds typically have higer concentration of antibiotic compounds than vegetaive parts of annual plants
+
+## Induced response to invasion
+
+\footnotesize
+- Plants respond to woulds in a non-specific production of corky tissue that wall off the broken area of the epidermis. Similar barriers are produced in the woody stems and roots of trees or other perennial plants in response to canker-forming pathogens.
+  - speed at which a plant produces such barrier is a measure of its generalized resistance
+- Cell walls in the epidermis may induce thickenings in reponse to pathogens attempting to penetrate their outer walls.
+  - walls thickenings are often infused with phenolic substances
+- Wilt disease fungi typically grow through the xylem and tend to cut off water flow to aerial parts of the plant
+  - plant may wall off the pathogen by forming tyloses within xylem cells
+- Plants activate pathways to produce characteristic antibiotic compounds called phytoalexins in the cells around the site of attack
+  - if the response is soon enough and extensive, plant may display partial resistance
+- The rate of response of the host may depend on its ability to recognize that it is being invaded.
+
+# Genome comparisons of plant pathogens (filamentous)
+
+##
+
+```{r pathogenic-fungi-genome-compare, fig.cap="Main features of sequenced filamentous plant pathogen genomes. Filamentous eukaryotic plant pathogens belong to either the fungi or the stramenopiles (oomycetes). The representative phylogeny depicts filamentous plant pathogens with sequenced genomes and has been generated using iTOL with NCBI taxonomy identifiers (branch lengths are arbitrary). Isolate identifier, or the number of isolates sequenced, is indicated next to the species name. Pathogen lifestyles and major variations in gene families are indicated along the tree branches. The principal host plants, genome size, main insights gained from genome comparisons, number of predicted protein-coding genes and repetitive DNA content (as a percentage of genome size) are shown next to the tree branches. CDC, conditionally dispensible chromosome; chr., chromosome; CNV, copy number variation; CRN, Crinkler; CWDE, cell wall-degrading enzyme; GPCR, G protein coupled receptor; GSR, gene-sparse region; incl., including; LS, lineage-specific; ND, not determined; NRPS, non-ribosomal peptide synthetase; P/A, presence/absence; PKS, polyketide synthase; pos. sel., positive selection; rec., recombination; RIP, repeat-induced point; SMB, secondary metabolite biosynthesis; SNPs, single-nucleotide polymorphisms; SSP, small secreted protein; TE, transposable element", out.width="40%"}
+# pdftools::pdf_convert("../literatures/NatureRevMicro_2012.pdf",
+                      # format = "png", pages = 3, dpi = 250,
+                      # filenames = "../images/genome_comparison_pathogenic_fungi.png")
+knitr::include_graphics("../images/genome_comparison_pathogenic_fungi.png")
+```
+
+
+# Genetic fine structure of resistance loci
+
+##
+
+Refer to Chapter 2 of @hulbert1997genetic.
+
+# Breeding for disease resistance
+
+##
+
+\small
+- To address ever evolving relationship between host-pathogen interaction, resistance breeding programmes systematically test wild relatives, landraces and other germplasm to identify new genetic sources of resistance to important pests and pathogens.
+- Simple resistance (based on single gene) can be effective in short term, but successful long term resistance requires dealing with genetic complexity.
+- Effective disease resistance depends on phenomena thay play out at level of genes, genotypes and populations.
+- Gene and genomic loci conferring resistance can be assessed in terms of the strength of their effect, their race specificity and their potential contribution towards durability.
+- At genotype level, performance of resistance is influenced by the number of resistance genes and their specific combination in host
+  - indirect effects on valued traits also need to be taken into account
+- At population level, effects on the durability of resistance and the spread of disease need to be considered
+
+(\footnotesize Based on a Review article by @nelson2018navigating)
+
+##
+
+\small
+- Plant breeders prefer broad-spectrum (race-nonspecific) resistance conferred by QRLs.
+- Genes conferring multiple disease resistance (MDR) are much valued -- they tend also to be durable.
+  \bitemize
+  \footnotesize
+  \item Causal genes for MDR are not clearly identified
+  \item But, either genetic linkage or pleiotropy have roles in MDR
+  \item Single pleiotropic gene or tightly linked genes can be moved between cultivars through traditional breeding
+  \item example: \textit{LR34} (encodes an ATP-binding cassette transporter rather than an NLR and provides incomplete resistance; \alert{it can actually be considered to be a strong QRL}) in wheat condition such resistance
+  \eitemize
+- Combining multiple R-genes and/or QRLs into a single genome usually improves its resistance phenotype -- an approach called gene pyramiding.
+
+```{r diff-qrl-pyramid}
+tribble(
+  ~"QRL", ~"Gene pyramid",
+  "QRL are generally additive in effect, although non-additive effects are also sometimes observed", "Pyramiding of R-genes can improve the spectrum of resistance; genes with complementary resistance spectra can be selected such that gene pyramids provide resistance to a broad set of pathogen races") %>% 
+  knitr::kable(booktabs = TRUE, caption = "Difference between gene pyramid and QRL") %>% 
+  kableExtra::kable_styling(position = "center", font_size = 6) %>% 
+  kableExtra::column_spec(column = 1:2, width = c("24em", "30em"))
+```
+
+# References
+
+<!-- \nocite{*} -->
+\renewcommand{\bibname}{References} 
+\scriptsize

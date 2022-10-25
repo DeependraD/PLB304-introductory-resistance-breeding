@@ -1,7 +1,7 @@
 ---
 title: "Defence mechanisms against pathogens, parasites, insects"
 author: |
-  | Deependra Dhakal
+  | \vspace{-0.5cm}Deependra Dhakal
   | Assistant Professor
   | Agriculture and Forestry University
   | \textit{ddhakal.rookie@gmail.com}
@@ -10,7 +10,9 @@ output:
   binb::monash:
     toc: true
     keep_tex: true
+    citation_package: natbib
     slide_level: 2
+    latex_engine: xelatex
     includes:
       in_header: beamer_header_template.tex
 colortheme: monashwhite
@@ -20,7 +22,7 @@ innercolortheme: rose
 outercolortheme: whale
 linkcolor: red
 urlcolor: lightgrayd
-titlepage: agrobacterium-transformation.png
+titlepage: fusrekhola_falls_kaski_20210814.jpg
 titlefontsize: 18pt # breaks custom \lineskip
 fontsize: 11pt
 classoption: "aspectratio=169" # "compressed"
@@ -50,15 +52,6 @@ options(kableExtra.latex.load_packages = FALSE)
 # https://github.com/philschatz/biology-book/blob/master/SUMMARY.md
 ```
 
-```{r}
-# pdftools::pdf_convert("/home/deependra/ddhakal/000readables/pathology/2009_Encyclopedia of Microbiology_3rd edition.pdf",
-#                       pages = 8, format = "png",
-#                       filenames = "agrobacterium-transformation.png",
-#                       dpi = 250)
-# Overview of agrobacterium tumefaciens infection process. Upon activation of the VirA/VirG two-component signal transduction system by signals released from wounded plant cells, a single-strand transferred DNA (T-DNA) is processed from the Ti plasmid and delivered as a nucleoprotein complex (T-complex) to plant nuclei. Expression of T-DNA genes in the plant result in the loss of cell growth control and tumor formation.
-# refer to text for more
-```
-
 # Defense mechanisms against pathogens, parasites
 
 ## 
@@ -78,7 +71,55 @@ options(kableExtra.latex.load_packages = FALSE)
   - Translation
   - Regulatory elements -- promoters, enhancers, silencers or terminators
 
+# Mechanisms of infection
+
+##
+
+```{r infection-mechanism-extracellular, fig.cap="Resistance mechanisms at the tissue level. At the organismal and tissue levels, the success of a pathogen can be influenced by a range of features of the morphology, biochemistry and microbiome of the plant.", out.width="80%"}
+# pdftools::pdf_convert("../literatures/nelson2017.pdf",
+#                       format = "png", pages = 6,
+#                       filenames = "../images/infection_process_plants.png",
+#                       dpi = 600)
+knitr::include_graphics("../images/infection_process_plants_extracellular.png")
+```
+
+##
+
+```{r infection-mechanism-intracellular, fig.cap="At cellular level, factors that affect the ability of a pathogen to infect its plant host include defence responses triggered by recognition events in the host via PRRs, such as WAKs or RLKs, and resistance proteins (R-proteins), such as NLR proteins, nutrient availability in the apoplast and cytoplasm; pre-existing chemical factors; and cell wall constitution. These factors are affected by host genotype and are potential causes of quantitative variation. Qualitative variation in resistance usually, though not always, occurs at the level of resistance gene-effector interactions.", out.width="80%"}
+# pdftools::pdf_convert("../literatures/nelson2017.pdf",
+#                       format = "png", pages = 6,
+#                       filenames = "../images/infection_process_plants.png",
+#                       dpi = 600)
+knitr::include_graphics("../images/infection_process_plants_intracellular.png")
+```
+
+
+## Genetic processes involved in infection
+
+```{r mechanism-of-infection, fig.cap="Overview of agrobacterium tumefaciens infection process. Upon activation of the VirA/VirG two-component signal transduction system by signals released from wounded plant cells, a single-strand transferred DNA (T-DNA) is processed from the Ti plasmid and delivered as a nucleoprotein complex (T-complex) to plant nuclei. Expression of T-DNA genes in the plant result in the loss of cell growth control and tumor formation.", out.width="66%", fig.align='center'}
+# pdftools::pdf_convert("/home/deependra/ddhakal/000readables/pathology/2009_Encyclopedia of Microbiology_3rd edition.pdf",
+#                       pages = 8, format = "png",
+#                       filenames = "../images/agrobacterium-transformation.png",
+#                       dpi = 250)
+# refer to text for more
+
+knitr::include_graphics("../images/agrobacterium-transformation.png")
+```
+
+
+## Mechanisms of genetic resistance [@van2020genetic]
+
+```{r genetic-solution-to-pathogens, out.width="40%", fig.align='center'}
+# pdftools::pdf_convert("../literatures/accessory/10.1111@nph.15967.pdf", filenames = "../images/genetic_solution_pathogens.png", format = "png", pages = 3, dpi = 300)
+knitr::include_graphics("../images/genetic_solution_pathogens.png")
+```
+
+
 # Gene for gene hypothesis
+
+##
+
+- @flor1956complementary was the first to show there was a 'gene-for-gene' relationship between the pathogen's avirulence ( _Avr_) genes and the resistance ( _R_) genes of its host.
 
 # Defense mechanisms against insects
 
