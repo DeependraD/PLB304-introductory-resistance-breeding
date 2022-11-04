@@ -29,6 +29,8 @@ bibliography: [./../bibliographies.bib]
 header-includes: 
   - \AtBeginSubsection{}
   - \captionsetup{skip=0pt,font=tiny,belowskip=-2pt,aboveskip=0pt}
+  - \newcommand{\bsmall}{\begin{small}}
+  - \newcommand{\esmall}{\end{small}}
 ---
 
 ```{r setup, include=FALSE}
@@ -53,7 +55,42 @@ options(kableExtra.latex.load_packages = FALSE)
 # https://github.com/philschatz/biology-book/blob/master/SUMMARY.md
 ```
 
-# Potential Yield
+# Terminologies
+
+##
+
+\begin{description}
+\small
+\item[Disease] Physiological disturbance of a plant/part of a plant caused by a stress factor or a combination of stress factors resulting in symptoms.
+\item[Host] Susceptible to a natural enemy and serves both as source of nutrition and as living substrate.
+\item[Parasite] Organism that more or less permanently and sometimes of part of its life cycle lives in close connection with a living organism and withdraws its nutrients completely or partially at the expense of that organism.
+\item[Pathogen] Having the capacity to infect plants; exploits the plants as a source of nutrition.
+\end{description}
+
+##
+
+\begin{description}
+\small
+\item[Infection] The use of a plant as nutrient source by a pathogen, usually resulting in reproduction of that enemy.
+\item[Infestation] The use of a plant as nutrient source by natural enemy and lives on that plant.
+\item[Sign] Visible parts of pathogen by which it can be recognized.
+\item[Symptom] Deviation from normal growth and development of a plant by stress factor(s).
+\item[Stress factor] Identifiable factor that potentially results in damage.
+\item[Damage] Reduction in physical or economic yield of a crop due to stress factors.
+\end{description}
+
+## Classification of pathogens
+
+\begin{description}
+\small
+\item[Biotrophs] Withdrawing nutrients from living host tissue (viruses, PM, rust fungi, loose smut).
+\item[Necrotrophs] Withdrawing nutrients from tissue killed by natural enemy (\textit{Septoria} spp., \textit{Helminthosporium} spp.)
+\item[Hemi-biotrophs] Withdrawing nutrients from living host tissue that soon after this will die (\textit{Phyophthora infestans}, Downy mildew fungus).
+\item[Weakness pathogen] That only can infect weakened plant parts with reduced fitness.
+\item[Vascular wilts] Pathogen that causes wilting of the host plant by blocking of the xylem and lives in and spreads through the vascular tissue (\textit{Fusarium} spp., \textit{Verticillium} spp.).
+\end{description}
+
+# Complex nature of Resistance
 
 ##
 
@@ -207,6 +244,64 @@ knitr::include_graphics("../images/disease_triangle.png")
 - Inheritance of disease (monogenic or polygenic)
 - Effectiveness (complete or partial)
 - Specificity (race specific or general)
+  - Horizontal resistance
+  - Vertical resistance
+
+## Vertical and horizontal resistance
+
+\begin{columns}[T, onlytextwidth]
+\column{0.5\textwidth}
+
+```{r vertical-resistance, fig.cap="Vertical resistance to concerned pathogen races of cultivar A of wheat.", fig.width=6, fig.height=5, out.width="98%"}
+vert_res <- tribble(~pathogen_race, ~resistance,
+                    "1", 35,
+                    "2", 20,
+                    "3", 28,
+                    "4", 55,
+                    "5", 100,
+                    "6", 22,
+                    "7", 43,
+                    "8", 58)
+
+ggplot(data = vert_res, aes(pathogen_race, resistance)) +
+  geom_bar(stat = "identity", position = "stack", fill = "red", color = "black") +
+  theme_bw() +
+  labs(x = "Races of pathogen", 
+       y = "Resistance") +
+  scale_y_continuous(labels = scales::percent_format(scale = 1))
+  
+``` 
+
+\column{0.5\textwidth}
+
+```{r horizontal-resistance, fig.cap="Horizontal resistance to concerned pathogen races of cultivar C and cultivar B of wheat.", fig.width=6, fig.height=5, out.width="98%"}
+horiz_res <- tibble(pathogen_race = 1:8, resistance_b = 60, resistance_c = 40) %>% 
+  pivot_longer(cols = 2:3, names_to = "cultivar", values_to = "resistance_value")
+
+ggplot(data = horiz_res, aes(pathogen_race, resistance_value)) +
+  geom_bar(stat = "identity", position = "stack", fill = "blue", color = "black") +
+  theme_bw() +
+  labs(x = "Races of pathogen", 
+       y = "Resistance") +
+  scale_y_continuous(labels = scales::percent_format(scale = 1), limits = c(0, 100)) +
+  facet_wrap(~cultivar, nrow = 2,
+             labeller = as_labeller(c(`resistance_b` = "Cultivar B", 
+                                      `resistance_c` = "Cultivar C")))
+  
+``` 
+
+\end{columns}
+
+## Tolerance and Sensitivity
+
+- \alert{Tolerance} neither restricts parasitic contact nor the growth and development of the parasite after establishment.
+  - Amount of damage/symptoms per unit quantity of parasite present is unaffected
+- \alert{Susceptibility} is the incapacity of a plant to reduce the growth, development and reproduction of the natural enemy.
+- \alert{Sensitivity} is the character of the host plant to develop relatively severe symptoms or severe damage per unit quantity of the natural enemy.
+
+$$
+\text{Sensitivity} = \frac{\frac{\text{Yield without pathogen}-\text{Yield with pathogen}}{\text{Yield without pathogen}}}{\text{Concentration of pathogen}}
+$$
 
 ## Inheritance
 

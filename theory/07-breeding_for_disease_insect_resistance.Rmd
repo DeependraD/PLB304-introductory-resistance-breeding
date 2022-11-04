@@ -29,6 +29,8 @@ bibliography: [./../bibliographies.bib]
 header-includes: 
   - \AtBeginSubsection{}
   - \captionsetup{skip=0pt,font=tiny,belowskip=-3pt}
+  - \newcommand{\bsmall}{\begin{small}}
+  - \newcommand{\esmall}{\end{small}}
 ---
 
 ```{r setup, include=FALSE}
@@ -66,6 +68,22 @@ theme_set(theme_bw())
 # Breeding for Insect Resistance
 
 ##
+
+## Chemical signaling pathways
+
+\bsmall
+
+Example of involvement of glucosinolates in interactions with insect pests (also deterrs slugs). 
+
+```{r glucosinolate-pathways-interaction, fig.align='center', out.width="66%", results='asis'}
+knitr::include_graphics("../images/insect_glucosinolate_signalling.PNG")
+cat("\\vspace{-0.4cm}")
+```
+
+- Besides interacting with insects,
+  - isothiocyanates (a constituent in brassica) are toxic to _Peronospora parasitica_, _Mycosphaerella brassicae_ and _Alternaria_ spp.
+
+\esmall
 
 # Breeding for Disease Resistance
 
