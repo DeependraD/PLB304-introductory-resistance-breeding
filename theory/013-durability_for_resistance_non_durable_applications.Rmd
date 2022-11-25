@@ -29,6 +29,7 @@ bibliography: [./../bibliographies.bib]
 header-includes: 
   - \AtBeginSubsection{}
   - \setbeamertemplate{itemize items}[circle]
+  - \usepackage{multicol}
 
 ---
 
@@ -49,6 +50,10 @@ options(knitr.kable.NA = "", digits = 2)
 options(kableExtra.latex.load_packages = FALSE)
 theme_set(theme_bw())
 ```
+
+# Boom and bust cycle of disease development
+
+##
 
 # Durability of Resistance
 
@@ -132,41 +137,6 @@ provide durable resistance.
 - Analysis of specific alleles at particular genes will become possible as more isogenic QRLs become available or causal genes are isolated
 - In most cases, it is essential to select for effective forms of resistance with low fitness penalties without requiring knowledge of the mechanisms at play.
 
-##
-
-\begin{columns}[T, onlytextwidth]
-
-\column{0.25\textwidth}
-\footnotesize
-
-To determine disease responses to \textit{Puccinia graminis} (Pg), the parents and all $F_1$ progeny were inoculated with basidiospores ejected from germinated teliospores produced by over-wintered telia of Pg found on naturally infected \textit{Elymus repens}. The progeny segregated into four clear phenotypic classes, ranging from resistant to susceptible.
-
-\column{0.75\textwidth}
-
-```{r non-host-resistance, fig.cap="Representative disease response of the two mapping population parents and their $F_1$ progeny. (a) Resistant reaction of \\textit{B. thunbergii} accession 'BtUCONN1' showing no visual symptoms; (b) Susceptible reaction of \\textit{B. vulgaris} accession 'Wagon Hill', showing dense pycnia on the upper leaf surface and prolific, well-developed aecia on the lower surface; (c) Resistant reaction (score 1 on the four-point scale) of \\textit{B. x ottawensis} progeny 'WH15-039', showing sparse flecking; (d) Moderate resistant reaction (score 2) of \\textit{B. x ottawawensis} progeny 'WH15-063', showing evident necrotic lesions and some pycnia formation; (e) Moderate susceptible reaction (score 3) of \\textit{B. x ottawensis} progeny 'WH15-128', showing well-developed pycnia and aecia, alogside sparse necrotic lesions; and (f) Susceptible reaction (score 4) of \\textit{B x ottawensis} progeny 'WH15-149', showing well-developed pycnia and aecia and no evident necrosis. All photos were taken 14 days post-inoculation.", out.width="28%"}
-knitr::include_graphics("../images/non-host-resistance-stem-rust.jpg")
-```
-
-\end{columns}
-
-\footnotesize Note: Refer to @bartaula2019mapping for details on mapping of non-host resistance to stem rust.
-
-##
-
-\footnotesize
-Weeds harboring various pathogenic fungi. Different symptoms observed on the sampled symptomatic weed species. Symptoms were identified in different groups as follows: black necrosis (blN), brown felting (brF), brown necrosis (brN), chlorosis (C), orange pustule (oP), pink necrosis (pN), powdery mildew (pM), rust (R), and white pustule (wP).
-
-```{r host-and-weed-harbors, out.width="54%", results='asis', fig.align='center'}
-cat("\\begin{columns}")
-cat("\\column{0.5\\textwidth}")
-knitr::include_graphics("../images/host-species1.jpg")
-cat("\\column{0.5\\textwidth}")
-knitr::include_graphics("../images/host-species2.jpg")
-cat("\\end{columns}")
-```
-
-# Methods for breeding better resistance
-
 ## 
 
 \small
@@ -242,15 +212,39 @@ knitr::include_graphics("../images/gene_pyramiding_rice_blast.png")
 
 ##
 
-- Allelopathy is a naturally occuring ecological phenomenon of interference among organisms.
-  - a pragmatic approach to resolving multiple issues, including pest management, stress management and growth enhancement
-  - resolves problem of resistance development, soil and environment pollution caused by non-judicious use of synthetic pesticides
-  - employed through crop rotations, crop cover, intercropping, mulching, incorporation of crop residues, and application of botanical extracts
-  - strategy could be used in multiple conjunctions
-- Allelopathy is the result of chemicals released (allelochemicals), mostly secondary metabolites produced by plants.
-  \bdescription
-  \item[Allelochemicals] alkaloids, amino acids, brassinosteroids, carbohydrates, flavonoids, glucosinolates, hydroxamic acids, jasmonates, momilactone, phenolics, salicylates, and terpenoids
-  \edescription
+\small
+- Concerns over the potential toxicity of pesticides and over the continuing loss of appropriate, effective pesticide available for disease control increased since 1970s\footnote[frame]{\scriptsize By 1960s US government banned mercury containing pesticides; existing pesticides were subjected to stricter reviews on their carcinogenic and mutagenic properties}. 
+- Re-examination and improvement of many old practices with incorporation of new cultural practices led to development of idea of integrated control of plant diseases. It embodies:
+  \begin{multicols}{2}
+  \begin{itemize}
+  \footnotesize
+  \item proper cultural practices (removal of plant debris and infected parts)
+  \item use of seed free of pathogens
+  \item crop rotation
+  \item soil fallow
+  \item reduced or no tillage
+  \item destruction of weeds
+  \item fertilization with appropriate amounts and forms of fertilizer
+  \item appropriate irrigation
+  \item adjusting the time and rate of sowing and date of harvest
+  \item minimizing the influx of pathogen vectors into crops through border plants
+  \item use of resistant varieties
+  \item deployment of 'cross-protection' or immunization
+  \item monitoring of the appearance and development of disease epidemics allowing for reduced use of pesticides
+  \end{itemize}
+  \end{multicols}
+
+<!-- ## -->
+
+<!-- - Allelopathy is a naturally occuring ecological phenomenon of interference among organisms. -->
+<!--   - a pragmatic approach to resolving multiple issues, including pest management, stress management and growth enhancement -->
+<!--   - resolves problem of resistance development, soil and environment pollution caused by non-judicious use of synthetic pesticides -->
+<!--   - employed through crop rotations, crop cover, intercropping, mulching, incorporation of crop residues, and application of botanical extracts -->
+<!--   - strategy could be used in multiple conjunctions -->
+<!-- - Allelopathy is the result of chemicals released (allelochemicals), mostly secondary metabolites produced by plants. -->
+<!--   \bdescription -->
+<!--   \item[Allelochemicals] alkaloids, amino acids, brassinosteroids, carbohydrates, flavonoids, glucosinolates, hydroxamic acids, jasmonates, momilactone, phenolics, salicylates, and terpenoids -->
+<!--   \edescription -->
 
 ## Weed and host crop management
 
@@ -270,6 +264,20 @@ knitr::include_graphics("../images/gene_pyramiding_rice_blast.png")
   - Barnyard grass ( _Echinochloa crus-galli_) population was substantially reduced in maize by the use of bean as legume cover crop.
 - Noxious paddy weeds such as Barnyard grass, flat sedge( _Cyperus difformis_), jungle rice ( _Echinochloa colonum_) can be suppressed by more than 70% through application of allelopathic plant mulches.
 - Water extract of sorghum plant as a natural herbicide is illustrated in wheat, cotton and sunflower, which suppresses weed biomass and density (~45%) of _C. album_, _Fumaria indica_, _P. minor_ and _Rumex dentatus_, with simultaneous increase in grain yield.
+
+##
+
+\footnotesize
+Weeds harboring various pathogenic fungi. Different symptoms observed on the sampled symptomatic weed species. Symptoms were identified in different groups as follows: black necrosis (blN), brown felting (brF), brown necrosis (brN), chlorosis (C), orange pustule (oP), pink necrosis (pN), powdery mildew (pM), rust (R), and white pustule (wP).
+
+```{r host-and-weed-harbors, out.width="54%", results='asis', fig.align='center'}
+cat("\\begin{columns}")
+cat("\\column{0.5\\textwidth}")
+knitr::include_graphics("../images/host-species1.jpg")
+cat("\\column{0.5\\textwidth}")
+knitr::include_graphics("../images/host-species2.jpg")
+cat("\\end{columns}")
+```
 
 ## Insect pest management
 
@@ -301,33 +309,83 @@ sclerotiorum_ in beans
 
 # Biological control of pests
 
-## Steps in classical biological control [@van2016integrating]
+##
 
-1. Target selection: Ecological rationale for engaging in project; obtaining financing
-2. Species confirmations: Verify identity of pest and, later, its potential natural enemies
-3. Survey for natural enemies: Carried out initially in the invaded area
-4. Identifying pest's native range: To locate areas to search for natural enemies
-5. Collecting natural enemies in native range: To obtain candidate natural enemies
-6. Judging potential efficacy and host range: Field estimates to guide initial selection of natural enemies
-7. Establishing quarantine colonies: To preserve stocks of natural enemies of likely value
-8. Estimating host ranges: Done for natural enemies of interest, usually in quarantine laboratories in receiving countries
-9. Petitioning for release: Done for natural enemies believed safe and potentially effective
-10. Release and establishment: Carried out in various parts of the invaded range
-11. Post-release monitoring: To determine impacts on pest and non-target species
-12. Assessing program outcomes: Assessment of the completeness and value of results via monitoring of pest and recovery of the invaded community.
+\small
+- First coined by Harry Smith in relation to the biological control of insects 
+- Suppression of insect population by native or introduced enemies.
+- Why use biological control ?
+  - When control agents are expensive, labor intensive, host specific
+  - While chemical pesticides are cost-effective, easy to apply and broad spectrum
+- Obvious benefits
+  - Non-toxic to humna
+  - Not a concern for water contamination
+  - Once colonized may last for years
+  - Host specific
+
+### Generic definition
+
+A population-leveling process in which the population of one species lowers the number of another.
+
+## Mechanisms
+
+**Antibiosis**
+
+- Inhibition of one organism by another as a result of diffusion of an antibiotic
+  \begin{itemize}
+  \small
+  \item Common soil-dwelling bacteria and fungi generally produce antibiotics
+  \item Example: zwittermicin A production by \textit{B. cereus} against Phytophthora root rot in Alfalfa.
+  \end{itemize}
+
+**Nutrient competition**
+
+- Competition between microorganisms for $C$, $N$, $O$, $Fe$, and other nutrients
+- Example: _P. fluorescens_, prevents bacterial blotch by competing with _P. tolaasii_.
+
+##
+
+\bcolumns
+\column{0.6\textwidth}
+**Destructive mycoparasitism**
+
+- Parasitism of one fungus by another enabled (in one or more ways) by direct contact, cell wall degrading enzymes, antibiotic production
+- Example: _Trichoderma harzianum_ used as seed treatment against pathogenic fungus and (possibly) promotes plant growth.
+  - Competent rhizosphere colonizer
+- But, why use a product for something that is readily available in the soil ?
+  - Wild strains $\longrightarrow$ Heterokaryotic
+  - Biocontrol strains $\longrightarrow$ Homokaryotic
+
+\column{0.4\textwidth}
+
+```{r trichoderma-coiling, fig.cap="Coiling of \\textit{Trichoderma} around a pathogen.", out.width="90%"}
+knitr::include_graphics("../images/trichoderma_coiling_around_pathogen.png")
+```
+
+\ecolumns
 
 ## Hyperparasitism and parasitoids
 
+\footnotesize
 - Parasitic wasps (Hymenoptera), ants (Hymenopters: Formicidae), ladybird beetles (Coleoptera: Coccinellidae), birds, rodents, and spiders (Araneae) have regulated the abundance of damaging insects for millions of years.
 - Natural enemies in field should be conserved with a provision of sheltering and pollen resourceful flowering plants around. 
 
 **Insect predators**
+\bcolumns
+\column{0.4\textwidth}
+\footnotesize
 
 - Insects of the family Coccinellidae feed on Aphids, scale insects and mealy bugs
-  - 2 spotted lady-beetle: _Adalla bipunctata_
-  - 7 spotted lady-beetle: _Coccinella septumpunctata_
-  - 9 spotted lady-beetle: _Coccinella novenpunctata_
-  - Vadalia beetle: _Rodolia cardinalis_
+  \begin{itemize}
+  \scriptsize
+  \item 2 spotted lady-beetle: \textit{Adalla bipunctata}
+  \item 7 spotted lady-beetle: \textit{Coccinella septumpunctata}
+  \item 9 spotted lady-beetle: \textit{Coccinella novenpunctata}
+  \item Vadalia beetle: \textit{Rodolia cardinalis}
+  \end{itemize}
+
+\column{0.6\textwidth}
+\scriptsize
 
 - Mantids prey on smaller insects
 - Syrphid fly predate on maggots and aphids
@@ -338,6 +396,14 @@ sclerotiorum_ in beans
 - Lampyridae
 - Reduvidae
 - _Xanthopimpla predator_ (Ichuenumonidae) predate on pupae of _Chilo partellus_
+
+\ecolumns
+
+##
+
+\bcolumns
+\column{0.5\textwidth}
+\footnotesize
 
 **Insect parasites**
 
@@ -358,6 +424,9 @@ sclerotiorum_ in beans
 - Entomophthora sphaerosperma
 - Coccus viridis
 
+\column{0.5\textwidth}
+\footnotesize
+
 **Bacterial**
 
 - Bacillus thuringiensis is effective against, _Heliocoverpa armigera_, _Pieries brassicae_, _Hellula undalis_, _Plodia interpunctella_ and _Tribolium confusum_
@@ -368,6 +437,24 @@ sclerotiorum_ in beans
 - Granulosis virus (Bergoldia virus) is effective against Potato tuber moth ( _Gnoremoschema opercullela_), Codling moth
 
 - _Rhizoctonia solanii_ and _Didymella exitalis_ putrates kills hyphal cells of Ophiobolus graminis (Fungal pathogen of wheat)
+
+\ecolumns
+
+## Steps in classical biological control [@van2016integrating]
+
+\footnotesize
+1. Target selection: Ecological rationale for engaging in project; obtaining financing
+2. Species confirmations: Verify identity of pest and, later, its potential natural enemies
+3. Survey for natural enemies: Carried out initially in the invaded area
+4. Identifying pest's native range: To locate areas to search for natural enemies
+5. Collecting natural enemies in native range: To obtain candidate natural enemies
+6. Judging potential efficacy and host range: Field estimates to guide initial selection of natural enemies
+7. Establishing quarantine colonies: To preserve stocks of natural enemies of likely value
+8. Estimating host ranges: Done for natural enemies of interest, usually in quarantine laboratories in receiving countries
+9. Petitioning for release: Done for natural enemies believed safe and potentially effective
+10. Release and establishment: Carried out in various parts of the invaded range
+11. Post-release monitoring: To determine impacts on pest and non-target species
+12. Assessing program outcomes: Assessment of the completeness and value of results via monitoring of pest and recovery of the invaded community.
 
 # Bibliography
 

@@ -1,0 +1,13 @@
+Crop,Disease/pathogen,Wild/related species
+Rice,Grassy stunt virus,Oryza nivara
+Rice,Stem rot (Sclerotium oryzae sativae),"O. rufipogon, O. nivara"
+Wheat,Stem rust (Puccinia graminis f.sp. Tritici),"Triticum boeticum, T. monococcum, T. durum, Agropyron elongatum"
+Wheat,Brown rust (P. recondita f. sp. Tritici),"Agropyron elongatum, A. monococcum"
+Wheat,Yellow rust (P. striiformis),Aegilops comosa
+Barley,Powdery mildew (Erysiphe graminis f. sp. Hordei),"Hordeum spontaneum, H. bulbosum"
+Grapes,Downy mildew (Plasmopara viticola),Vitis unifera var. sylvestris
+Tomato,Wilt (Fusarium oxysporum f. sp. Lycopersici),Lycopersicum pimpinellifolium
+Tomato,Blight (Septoria lycopersici),L. hirsutum
+Potato,Late blight (Phytophthora infestans),"Solanum demissum, S. bulbocastanum"
+Potato,Charcol rot (Marophomina phaseolina),S. chacoense
+Potato,Virus X,S. cartilobum

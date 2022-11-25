@@ -184,6 +184,7 @@
   \newcommand{\bitemize}{\begin{itemize}}
   \newcommand{\eitemize}{\end{itemize}}
   \AtBeginSubsection{}
+  \captionsetup{skip=0pt,font=tiny,belowskip=-1pt,aboveskip=0pt}
 
   \title[]{Natural Enemies and their Types}
 
@@ -226,70 +227,97 @@ Classification}\label{natural-enemy-classification}}
 
 \begin{frame}{}
 \protect\hypertarget{section}{}
-\begingroup\fontsize{8}{10}\selectfont
+\bcolumns
+\column{0.5\textwidth}
+
+\begingroup\fontsize{6}{8}\selectfont
 
 \begin{longtable}[t]{lll}
 \caption{\label{tab:natural-enemy-classification}Taxonomic group of organisms and nature of damage to crops}\\
 \toprule
-Taxonomic group & Enemy group & Effect on plant\\
+Effect on plant & Taxonomic group & Enemy group\\
 \midrule
-\cellcolor{gray!6}{Virus} & \cellcolor{gray!6}{Pathogen} & \cellcolor{gray!6}{Disease infection}\\
-Phytoplasma & Pathogen & Disease infection\\
-\cellcolor{gray!6}{Fungus} & \cellcolor{gray!6}{Pathogen} & \cellcolor{gray!6}{Disease infection}\\
-Higher plant & Parasite & Infestation\\
-\cellcolor{gray!6}{Nematode} & \cellcolor{gray!6}{Parasite} & \cellcolor{gray!6}{Infestation}\\
-\addlinespace
-Insect & Parasite & Infestation\\
-\cellcolor{gray!6}{Insect} & \cellcolor{gray!6}{Herbivores} & \cellcolor{gray!6}{Infestation}\\
-Snail and slug & Herbivores & Infestation\\
-\cellcolor{gray!6}{Vertebrate} & \cellcolor{gray!6}{Herbivores} & \cellcolor{gray!6}{Biting damage}\\
+\cellcolor{gray!6}{Disease infection} & \cellcolor{gray!6}{Virus} & \cellcolor{gray!6}{Pathogen}\\
+\cmidrule{1-3}\pagebreak[0]
+Disease infection & Phytoplasma & Pathogen\\
+\cmidrule{1-3}\pagebreak[0]
+\cellcolor{gray!6}{Disease infection} & \cellcolor{gray!6}{Fungus} & \cellcolor{gray!6}{Pathogen}\\
+\cmidrule{1-3}\pagebreak[0]
+Disease infection & Fungus & Parasite\\
+\cmidrule{1-3}\pagebreak[0]
+\cellcolor{gray!6}{Infestation} & \cellcolor{gray!6}{Higher plant} & \cellcolor{gray!6}{Parasite}\\
+\cmidrule{1-3}\pagebreak[0]
+Infestation & Nematode & Parasite\\
+\cmidrule{1-3}\pagebreak[0]
+\cellcolor{gray!6}{Infestation} & \cellcolor{gray!6}{Insect} & \cellcolor{gray!6}{Parasite}\\
+\cmidrule{1-3}\pagebreak[0]
+Infestation & Insect & Herbivores\\
+\cmidrule{1-3}\pagebreak[0]
+\cellcolor{gray!6}{Infestation} & \cellcolor{gray!6}{Snail and slug} & \cellcolor{gray!6}{Herbivores}\\
+\cmidrule{1-3}\pagebreak[0]
+Biting damage & Vertebrate & Herbivores\\
 \bottomrule
 \end{longtable}
 \endgroup{}
+
+\column{0.5\textwidth}
+
+\includegraphics[width=0.8\linewidth]{../images/biomass_of_life}
+
+\ecolumns
 \end{frame}
 
-\begin{frame}{Steps in classical biological control
-\citep{van2016integrating}}
-\protect\hypertarget{steps-in-classical-biological-control-van2016integrating}{}
-\begin{enumerate}
+\begin{frame}{Distinction of stages of variation in plants and
+pathogens}
+\protect\hypertarget{distinction-of-stages-of-variation-in-plants-and-pathogens}{}
+Refer to Page 134, \citet{agrios2005plant}.
+\end{frame}
+
+\begin{frame}{Identification of physiological races and pathotypes}
+\protect\hypertarget{identification-of-physiological-races-and-pathotypes}{}
+\footnotesize
+
+\begin{itemize}
 \tightlist
 \item
-  Target selection: Ecological rationale for engaging in project;
-  obtaining financing
+  Concepts of physiological races was introduced by Barrus in 1911.
 \item
-  Species confirmations: Verify identity of pest and, later, its
-  potential natural enemies
+  To identify and distinguish different species of a pathogen and
+  races/strains within a species `differential hosts' are used.
+
+  \begin{description}
+  \small
+  \item[Differential host] are the varieties of host species used to identify physiological races of a pathogen or sets of plant cultivars used to define pathotypes of pathogen based on known susceptible and resistant reactions
+  \end{description}
 \item
-  Survey for natural enemies: Carried out initially in the invaded area
+  Maximum number of races identifiable with \(n\) number of differential
+  hosts is given by relation,
+\end{itemize}
+
+\[
+\small
+\text{Number of races identifiable} = r^n
+\] - Where,
+
+\begin{itemize}
+  \item $r$ = number of reaction types identifiable (e.g. resistant or susceptible, or others.)
+  \end{itemize}
+
+\begin{itemize}
+\tightlist
 \item
-  Identifying pest's native range: To locate areas to search for natural
-  enemies
+  If only two types of host-pathogen reaction are recorded
+  (i.e.~resistant and susceptible), a set of \(n\) ideal differentials
+  would identify \(2^n\) physiological races.
 \item
-  Collecting natural enemies in native range: To obtain candidate
-  natural enemies
-\item
-  Judging potential efficacy and host range: Field estimates to guide
-  initial selection of natural enemies
-\item
-  Establishing quarantine colonies: To preserve stocks of natural
-  enemies of likely value
-\item
-  Estimating host ranges: Done for natural enemies of interest, usually
-  in quarantine laboratories in receiving countries
-\item
-  Petitioning for release: Done for natural enemies believed safe and
-  potentially effective
-\item
-  Release and establishment: Carried out in various parts of the invaded
-  range
-\item
-  Post-release monitoring: To determine impacts on pest and non-target
-  species
-\item
-  Assessing program outcomes: Assessment of the completeness and value
-  of results via monitoring of pest and recovery of the invaded
-  community.
-\end{enumerate}
+  Ideally, each of the differential hosts should posses a single
+  resistance gene different from those present in the others.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-1}{}
+\ldots{}
 \end{frame}
 
 \begin{frame}{Insects and Diseases of Major Crops in Nepal}
@@ -315,12 +343,72 @@ Barley & Green bug, corn sawfly, fruitfly, wheat bulb fly & Barley yellow dwarf 
 \hypertarget{diseases}{%
 \section{Diseases}\label{diseases}}
 
-\begin{frame}{Pathogenic fungi}
-\protect\hypertarget{pathogenic-fungi}{}
+\begin{frame}{}
+\protect\hypertarget{section-2}{}
+\begin{table}
+
+\caption{\label{tab:fungal-pseudo-fungal-classification}Classification of fungi and fungal-like organisms that cause disease on plants.}
+\centering
+\fontsize{4}{6}\selectfont
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{18em}>{\raggedright\arraybackslash}p{16em}>{\raggedright\arraybackslash}p{12em}>{\raggedright\arraybackslash}p{28em}}
+\toprule
+Group & Phylum (Super/Phy/Sub/Infra) & Class & Order & Features\\
+\midrule
+ &  &  &  & Produce a plasmodium or plasmodium like structure\\
+\cmidrule{3-5}
+ &  & Dictyosteliida &  & Cellular slime molds\\
+\cmidrule{3-5}
+\multirow{-3}{*}{\raggedright\arraybackslash Domain: Eukaryota} & \multirow{-3}{*}{\raggedright\arraybackslash Phylum: Amebozoa, Infra-phylum: Mycetozoa} & Myxogastria &  & Plasmodial slime molds\\
+\cmidrule{1-5}
+ & Phylum: Cercozoa (as Rhizaria is a part of SAR assemblages (Stramenopiles+Alveolates+Rhizaria), shares common ancestory with Stramenopiles) & Phytomyxea & Plasmodiophorida & Endoparasitic slime molds\\
+\cmidrule{2-5}
+\multirow{-2}{*}{\raggedright\arraybackslash Kingdom: Chromista} & Super-phylum: Heterokonta/Stramenopiles, Subphylum: Pseudofungi & Oomycetes & Peronosporales (Families: Albuginaceae, Peronosporaceae, Pythiaceae) (eg) & Stramenopiles have two different flagella, one having hollow tripartite hairs; Peronosporales have elongated non-septate mycelium, biflagellate zoospores in zoosporangia, oospores\\
+\cmidrule{1-5}
+ &  & Division: Chytridiomycota, Class: Chytridiomycetes & Chytridiales (eg) & Have zoospores with a single posterior flagellum, round or elongated mycelium\\
+\cmidrule{3-5}
+ &  & Division: Zygomycota &  & Produce non-motile asexual spores in sporangia. Resting spore is a zygospore\\
+\cmidrule{3-5}
+ &  & Division: Ascomycota &  & Produce sexual spores, ascospores, in asci. Produce nonmotile asexual spores (conidia)\\
+\cmidrule{3-5}
+\multirow{-4}{*}{\raggedright\arraybackslash Kingdom: Fungi} & \multirow{-4}{*}{\raggedright\arraybackslash Eumycota} & Division: Basidiomycota &  & Produce sexual spores, basidiospores, externally on a basidium\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+(\scriptsize For a more descriptive classification refer to
+\citet{agrios2005plant}, section on Classification of plant pathogenic
+fungi, Chapter 11 -- Plant diseases caused by fungi.)
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-3}{}
+\begin{center}\includegraphics[width=0.84\linewidth]{../images/wiki_opisthokonta} \end{center}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-4}{}
+\bcolumns
+\column{0.6\textwidth}
+
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{../images/Phytophthora_infestans_on_potato} \caption{Life cycle of phytophthora infestans}\label{fig:phytophthora-infestans-life-cycle}
+\end{figure}
+
+\column{0.4\textwidth}
+
+\includegraphics[width=0.8\linewidth]{../images/Phytophtora_reproduction}
+
+\includegraphics[width=0.8\linewidth]{../images/Late_blight_on_potato_leaf}
+
+\ecolumns
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-5}{}
 \begin{itemize}
 \tightlist
 \item
-  Most belong to phyla Ascomycota and Basidiomycota
+  Most pathogenic fungi belong to phyla Ascomycota and Basidiomycota
 \item
   Fungi reproduce both sexually and asexually via the production of
   spores and other structures
@@ -354,6 +442,36 @@ Barley & Green bug, corn sawfly, fruitfly, wheat bulb fly & Barley yellow dwarf 
     of all described fungal taxa)
   \end{itemize}
 \end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-6}{}
+\begin{itemize}
+\tightlist
+\item
+  Ascomycota
+
+  \begin{itemize}
+  \footnotesize
+  \item 98\% of lichens have an Ascomycota as the fungal part (symbiotic association) of the lichen.
+  \item 2000 identified genera and 30,000 species of Ascomycota. Most ascomycetes are terrestrial or parasitic. However, some have adapted to marine or freshwater environments.
+  \item Presence of a reproductive structure known as the ascus, though in some cases it has a reduced role in the life cycle.
+  \item Used as yeasts in baking/brewing and treated as delicacies as truffles and morels. The mold Penicillium is used to produce the antibiotic penicillin.
+  \item Many cause tree diseases, such as Dutch elm disease and apple blights. Some of the plant pathogenic ascomycetes are apple scab, rice blast, the ergot fungi, black knot, and the powdery mildews.
+  \item Morels (a highly prized edible fungi) form important mycorrhizal relationships with plants, thereby providing enhanced water and nutrient uptake and, in some cases, protection from insects.
+  \item The cell walls of the hyphae are variably composed of chitin and $\beta$-glucans, just as in Basidiomycota. However, these fibers are set in a matrix of glycoprotein containing the sugars galactose and mannose.
+  \item The mycelium of ascomycetes is usually made up of septate hyphae. However, there is not necessarily any fixed number of nuclei in each of the divisions.
+  \item The septal walls have septal pores which provide cytoplasmic continuity throughout the individual hyphae. Under appropriate conditions, nuclei may also migrate between septal compartments through the septal pores.
+  \item A unique character (but not present in all ascomycetes) is the presence of Woronin bodies on each side of the septa separating the hyphal segments which control the septal pores.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-7}{}
+\begin{figure}
+\includegraphics[width=0.72\linewidth]{../images/generalized_life_cycle_pathogenic_fungi} \caption{Schematic representation of the genralized life cycles of oomycetes and the main groups of phytopathogenic fungi.}\label{fig:life-cycle-plant-pathogenic-fungi}
+\end{figure}
 \end{frame}
 
 \begin{frame}{Rust and smut}
@@ -421,101 +539,7 @@ Barley & Green bug, corn sawfly, fruitfly, wheat bulb fly & Barley yellow dwarf 
 \end{frame}
 
 \begin{frame}{}
-\protect\hypertarget{section-1}{}
-\begin{itemize}
-\tightlist
-\item
-  There are five spore stages that are produced and two hosts are
-  required (heteroecious species) in the completion:
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Stage 0:Spermagonium
-
-    \begin{itemize}
-    \tightlist
-    \item
-      Flask shaped structure containing haploid spermatia (male gamete)
-      and receptive hyphae
-    \item
-      Spermatia fertilize receptive hyphae of the compatible mating type
-      and subsequent production of dikaryotic mycelium.
-    \item
-      Produces (on upper surface of the barberry leaf) sex organs in
-      rust
-    \item
-      Are of two mating types (due to being derived from basidiospores)
-    \end{itemize}
-  \item
-    Stage I: Aecium
-
-    \begin{itemize}
-    \tightlist
-    \item
-      When spermatia are transferred to compatible receptive hyphae,
-      this begins the dikaryotic stage of the life cycle and directly
-      produces the aecium on the lower surface of the barberry leaf
-    \item
-      Chains of aeciospores (which burst through the lower surface of
-      the leaf) are formed in aecium
-    \end{itemize}
-  \item
-    Stage II: Uredium
-
-    \begin{itemize}
-    \tightlist
-    \item
-      Can attack and infect host plants
-    \end{itemize}
-  \item
-    Stage III: Telium
-
-    \begin{itemize}
-    \tightlist
-    \item
-      Teliospores serve only as the sexual, overwintering stage
-    \end{itemize}
-  \item
-    Stage IV: Basidium
-
-    \begin{itemize}
-    \tightlist
-    \item
-      Heterothallic and basidia produce basidiospores that are of two
-      mating types
-    \item
-      Basidiospores are capable of only infecting the leaves of
-      \textit{Berberis} sp. (barberry)
-    \item
-      Cells of the teliospore germinates to produce a short germ tube
-      that will develop into a basidium that is essentially transversely
-      septate
-    \end{itemize}
-  \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{}
-\protect\hypertarget{section-2}{}
-\begin{columns}[T, onlytextwidth]
-\column{0.35\textwidth}
-
-\begin{figure}
-\includegraphics[width=0.9\linewidth]{../images/spores_rust_fungi} \caption{Kinds and sequence of spores and spore-producing structures in rust fungi along with the nuclear condition of each. (Myc: Mycelium)}\label{fig:rust-spores-structures}
-\end{figure}
-
-\column{0.65\textwidth}
-
-\begin{figure}
-\includegraphics[width=0.85\linewidth]{../images/asexual_multicellular_structures_fungi} \caption{Asexual complex multicellular structures produced by fungi in the Pucciniomycotina (spermogonium, aecium) and Ascomycota (acervulus, pycnidium, sporodochium, coremium = synnemata). Note that these structures, like all complex multicellular structures, have a genetically determined shape and size and a tightly integrated developmental program. Plant tissue is shaded in green.}\label{fig:asexual-structures-fungi}
-\end{figure}
-
-\end{columns}
-\end{frame}
-
-\begin{frame}{}
-\protect\hypertarget{section-3}{}
+\protect\hypertarget{section-8}{}
 \begin{itemize}
 \tightlist
 \item
@@ -544,7 +568,7 @@ Barley & Green bug, corn sawfly, fruitfly, wheat bulb fly & Barley yellow dwarf 
 \end{frame}
 
 \begin{frame}{}
-\protect\hypertarget{section-4}{}
+\protect\hypertarget{section-9}{}
 \begin{itemize}
 \tightlist
 \item
@@ -585,7 +609,7 @@ It is a lineage of wheat stem rust ( \textit{Puccinia graminis} f. sp. \textit{t
 \end{frame}
 
 \begin{frame}{}
-\protect\hypertarget{section-5}{}
+\protect\hypertarget{section-10}{}
 \begin{columns}[T, onlytextwidth]
 \column{0.4\textwidth}
 
@@ -603,7 +627,7 @@ It is a lineage of wheat stem rust ( \textit{Puccinia graminis} f. sp. \textit{t
 \end{frame}
 
 \begin{frame}{}
-\protect\hypertarget{section-6}{}
+\protect\hypertarget{section-11}{}
 \begin{figure}\caption{Stem rust on UK breeding nurseries}\begin{columns}\column{0.5\textwidth}
 
 \begin{center}\includegraphics[width=0.55\linewidth]{../images/FWGDjevXwAEBzeT} \end{center}
@@ -629,14 +653,14 @@ It is a lineage of wheat stem rust ( \textit{Puccinia graminis} f. sp. \textit{t
 \end{frame}
 
 \begin{frame}{}
-\protect\hypertarget{section-7}{}
+\protect\hypertarget{section-12}{}
 \begin{figure}\caption{\textit{Puccinia recondita} on \textit{Secale cereale}} 
 \begin{columns}\column{0.4\textwidth}\includegraphics[width=0.72\linewidth]{../images/FYCo7NmWQAkXvRB}\column{0.6\textwidth}\includegraphics[width=0.6\linewidth]{../images/FYCo7NwXgAYe9r1} \\ 
 \includegraphics[width=0.6\linewidth]{../images/FYCo7NrXkAAOJZh}\end{columns}\end{figure}
 \end{frame}
 
 \begin{frame}{}
-\protect\hypertarget{section-8}{}
+\protect\hypertarget{section-13}{}
 \begin{figure}
 \includegraphics[width=0.36\linewidth]{../images/FRruRoiX0AE_dF0} \caption{Rust on flowering stage \textit{Berberis vulgaris} caused by \textit{Puccinia graminis} at the beginning of the aecial stage.}\label{fig:berberis-rust}
 \end{figure}
@@ -705,7 +729,7 @@ It is a lineage of wheat stem rust ( \textit{Puccinia graminis} f. sp. \textit{t
 \end{frame}
 
 \begin{frame}{}
-\protect\hypertarget{section-9}{}
+\protect\hypertarget{section-14}{}
 \begin{figure}
 \includegraphics[width=0.38\linewidth]{../images/plantain_podosphaera_plantaginis_powdery_mildew} \caption{Powdery mildew on buckhorn plantain (\textit{Plantago lanceolata}) caused by \textit{Podosphaera plantaginis}, here with cleistothecia containing a single ascus and eight ascospores.}\label{fig:plantain-powdery-mildew}
 \end{figure}
@@ -716,7 +740,7 @@ It is a lineage of wheat stem rust ( \textit{Puccinia graminis} f. sp. \textit{t
 \end{frame}
 
 \begin{frame}{}
-\protect\hypertarget{section-10}{}
+\protect\hypertarget{section-15}{}
 \begin{columns}[T, onlytextwidth]
 \column{0.5\textwidth}
 
@@ -737,7 +761,7 @@ blast fungus, refer to \citet{eseola2021investigating}.
 \end{frame}
 
 \begin{frame}{}
-\protect\hypertarget{section-11}{}
+\protect\hypertarget{section-16}{}
 \begin{columns}[T, onlytextwidth]
 \column{0.45\textwidth}
 
@@ -758,9 +782,73 @@ against rice blast fungus.
 \end{frame}
 
 \begin{frame}{}
-\protect\hypertarget{section-12}{}
+\protect\hypertarget{section-17}{}
 \begin{figure}
 \includegraphics[width=0.25\linewidth]{../images/rice_hoja_blanca_virus} \caption{Rice hoja blanca virus}\label{fig:rice-hoja-blanca-virus}
+\end{figure}
+\end{frame}
+
+\hypertarget{mechanisms-of-infection}{%
+\section{Mechanisms of infection}\label{mechanisms-of-infection}}
+
+\begin{frame}{Mechanisms of infection}
+\footnotesize
+
+\begin{itemize}
+\tightlist
+\item
+  Pathogens act in a variety of pathways to cause infection
+\item
+  In pathogens that show a high level of gene flow, greater genetic
+  diversity exists
+\item
+  In pathogens reproducing asexually (with no recombination), entire
+  genotypes are transferred from one population to another -- phenomena
+  called genotype flow
+\item
+  Hardy spores or propagules (rust and powdery mildew) can spread over
+  long distances, sometimes encompassing entire continents.
+\item
+  Soil-borne fungi and nematodes move slowly and are present in small
+  areas.
+\item
+  Gene flow reduces genetic differences between populations, preventing
+  delays in drastic evolution of the population in different
+  geographical areas.
+\item
+  Population size affects phenomena such as mutation, genetic drift and
+  selection
+
+  \begin{itemize}
+  \footnotesize
+  \item $\Uparrow$ population size $\thicksim$ $\Uparrow$ mutants alleles are conserved
+  \item $\Uparrow$ population size $\thicksim$ $\Uparrow$ rare alleles are preserved under genetic drift 
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-18}{}
+\begin{figure}
+\includegraphics[width=0.8\linewidth]{../images/infection_process_plants_extracellular} \caption{Resistance mechanisms at the tissue level. At the organismal and tissue levels, the success of a pathogen can be influenced by a range of features of the morphology, biochemistry and microbiome of the plant.}\label{fig:infection-mechanism-extracellular}
+\end{figure}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-19}{}
+\begin{figure}
+\includegraphics[width=0.78\linewidth]{../images/infection_process_plants_intracellular} \caption{At cellular level, factors that affect the ability of a pathogen to infect its plant host include defence responses triggered by recognition events in the host via PRRs, such as WAKs or RLKs, and resistance proteins (R-proteins), such as NLR proteins, nutrient availability in the apoplast and cytoplasm; pre-existing chemical factors; and cell wall constitution. These factors are affected by host genotype and are potential causes of quantitative variation. Qualitative variation in resistance usually, though not always, occurs at the level of resistance gene-effector interactions.}\label{fig:infection-mechanism-intracellular}
+\end{figure}
+\end{frame}
+
+\hypertarget{genome-comparisons-of-plant-pathogens-filamentous}{%
+\section{Genome comparisons of plant pathogens
+(filamentous)}\label{genome-comparisons-of-plant-pathogens-filamentous}}
+
+\begin{frame}{}
+\protect\hypertarget{section-20}{}
+\begin{figure}
+\includegraphics[width=0.4\linewidth]{../images/genome_comparison_pathogenic_fungi} \caption{Main features of sequenced filamentous plant pathogen genomes. Filamentous eukaryotic plant pathogens belong to either the fungi or the stramenopiles (oomycetes). The representative phylogeny depicts filamentous plant pathogens with sequenced genomes and has been generated using iTOL with NCBI taxonomy identifiers (branch lengths are arbitrary). Isolate identifier, or the number of isolates sequenced, is indicated next to the species name. Pathogen lifestyles and major variations in gene families are indicated along the tree branches. The principal host plants, genome size, main insights gained from genome comparisons, number of predicted protein-coding genes and repetitive DNA content (as a percentage of genome size) are shown next to the tree branches. CDC, conditionally dispensible chromosome; chr., chromosome; CNV, copy number variation; CRN, Crinkler; CWDE, cell wall-degrading enzyme; GPCR, G protein coupled receptor; GSR, gene-sparse region; incl., including; LS, lineage-specific; ND, not determined; NRPS, non-ribosomal peptide synthetase; P/A, presence/absence; PKS, polyketide synthase; pos. sel., positive selection; rec., recombination; RIP, repeat-induced point; SMB, secondary metabolite biosynthesis; SNPs, single-nucleotide polymorphisms; SSP, small secreted protein; TE, transposable element}\label{fig:pathogenic-fungi-genome-compare}
 \end{figure}
 \end{frame}
 
@@ -863,10 +951,10 @@ Crop group & Common name & Scientific name & Family & Control & Remark\\
 \end{frame}
 
 \begin{frame}{}
-\protect\hypertarget{section-13}{}
+\protect\hypertarget{section-21}{}
 \begin{table}
 
-\caption{\label{tab:unnamed-chunk-1}Insect pests of fruits and vegetables (...continued)}
+\caption{\label{tab:unnamed-chunk-3}Insect pests of fruits and vegetables (...continued)}
 \centering
 \fontsize{4}{6}\selectfont
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{5em}>{\raggedright\arraybackslash}p{13em}>{\raggedright\arraybackslash}p{14em}>{\raggedright\arraybackslash}p{14em}>{\raggedright\arraybackslash}p{7em}>{\raggedright\arraybackslash}p{12em}}
@@ -908,10 +996,10 @@ Crop group & Common name & Scientific name & Family & Control & Remark\\
 \end{frame}
 
 \begin{frame}{}
-\protect\hypertarget{section-14}{}
+\protect\hypertarget{section-22}{}
 \begin{table}
 
-\caption{\label{tab:unnamed-chunk-2}Insect pests of fruits and vegetables (...continued)}
+\caption{\label{tab:unnamed-chunk-4}Insect pests of fruits and vegetables (...continued)}
 \centering
 \fontsize{5}{7}\selectfont
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{12em}>{\raggedright\arraybackslash}p{14em}>{\raggedright\arraybackslash}p{14em}>{\raggedright\arraybackslash}p{8em}>{\raggedright\arraybackslash}p{8em}}
@@ -951,10 +1039,10 @@ Crop group & Common name & Scientific name & Family & Control & Remark\\
 \end{frame}
 
 \begin{frame}{}
-\protect\hypertarget{section-15}{}
+\protect\hypertarget{section-23}{}
 \begin{table}
 
-\caption{\label{tab:unnamed-chunk-3}Insect pests of fruits and vegetables (...continued)}
+\caption{\label{tab:unnamed-chunk-5}Insect pests of fruits and vegetables (...continued)}
 \centering
 \fontsize{4}{6}\selectfont
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{12em}>{\raggedright\arraybackslash}p{15em}>{\raggedright\arraybackslash}p{14em}>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{16em}}
@@ -982,10 +1070,10 @@ Crop group & Common name & Scientific name & Family & Control & Remark\\
 \end{frame}
 
 \begin{frame}{}
-\protect\hypertarget{section-16}{}
+\protect\hypertarget{section-24}{}
 \begin{table}
 
-\caption{\label{tab:unnamed-chunk-4}Insect pests of fruits and vegetables (...continued)}
+\caption{\label{tab:unnamed-chunk-6}Insect pests of fruits and vegetables (...continued)}
 \centering
 \fontsize{4}{6}\selectfont
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{5em}>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{15em}>{\raggedright\arraybackslash}p{12em}>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{22em}}
@@ -1013,10 +1101,10 @@ Crop group & Common name & Scientific name & Family & Control & Remark\\
 \end{frame}
 
 \begin{frame}{}
-\protect\hypertarget{section-17}{}
+\protect\hypertarget{section-25}{}
 \begin{table}
 
-\caption{\label{tab:unnamed-chunk-5}Insect pests of fruits and vegetables (...continued)}
+\caption{\label{tab:unnamed-chunk-7}Insect pests of fruits and vegetables (...continued)}
 \centering
 \fontsize{4}{6}\selectfont
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{12em}>{\raggedright\arraybackslash}p{14em}>{\raggedright\arraybackslash}p{14em}>{\raggedright\arraybackslash}p{14em}>{\raggedright\arraybackslash}p{8em}}
@@ -1044,10 +1132,10 @@ Crop group & Common name & Scientific name & Family & Control & Remark\\
 \end{frame}
 
 \begin{frame}{}
-\protect\hypertarget{section-18}{}
+\protect\hypertarget{section-26}{}
 \begin{table}
 
-\caption{\label{tab:unnamed-chunk-6}Insect pests of fruits and vegetables (...continued)}
+\caption{\label{tab:unnamed-chunk-8}Insect pests of fruits and vegetables (...continued)}
 \centering
 \fontsize{4}{6}\selectfont
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{12em}>{\raggedright\arraybackslash}p{14em}>{\raggedright\arraybackslash}p{14em}>{\raggedright\arraybackslash}p{14em}>{\raggedright\arraybackslash}p{8em}}
@@ -1075,10 +1163,10 @@ Crop group & Common name & Scientific name & Family & Control & Remark\\
 \end{frame}
 
 \begin{frame}{}
-\protect\hypertarget{section-19}{}
+\protect\hypertarget{section-27}{}
 \begin{table}
 
-\caption{\label{tab:unnamed-chunk-7}Insect pests of fruits and vegetables (...continued)}
+\caption{\label{tab:unnamed-chunk-9}Insect pests of fruits and vegetables (...continued)}
 \centering
 \fontsize{5}{7}\selectfont
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{14em}>{\raggedright\arraybackslash}p{12em}>{\raggedright\arraybackslash}p{8em}>{\raggedright\arraybackslash}p{8em}}

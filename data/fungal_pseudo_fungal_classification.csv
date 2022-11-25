@@ -1,0 +1,11 @@
+# Note: features are specific to the taxa which ranks above the one has �(eg)� indicated,,,,
+Group,Phylum (Super/Phy/Sub/Infra),Class,Order,Features
+Domain: Eukaryota,"Phylum: Amebozoa, Infra-phylum: Mycetozoa",,,Produce a plasmodium or plasmodium like structure
+Domain: Eukaryota,"Phylum: Amebozoa, Infra-phylum: Mycetozoa",Dictyosteliida,,Cellular slime molds
+Domain: Eukaryota,"Phylum: Amebozoa, Infra-phylum: Mycetozoa",Myxogastria,,Plasmodial slime molds
+Kingdom: Chromista,"Phylum: Cercozoa (as Rhizaria is a part of SAR assemblages (Stramenopiles+Alveolates+Rhizaria), shares common ancestory with Stramenopiles)",Phytomyxea,Plasmodiophorida,Endoparasitic slime molds
+Kingdom: Chromista,"Super-phylum: Heterokonta/Stramenopiles, Subphylum: Pseudofungi",Oomycetes,"Peronosporales (Families: Albuginaceae, Peronosporaceae, Pythiaceae) (eg)","Stramenopiles have two different flagella, one having hollow tripartite hairs; Peronosporales have elongated non-septate mycelium, biflagellate zoospores in zoosporangia, oospores"
+Kingdom: Fungi,Eumycota,"Division: Chytridiomycota, Class: Chytridiomycetes",Chytridiales (eg),"Have zoospores with a single posterior flagellum, round or elongated mycelium"
+Kingdom: Fungi,Eumycota,Division: Zygomycota,,Produce non-motile asexual spores in sporangia. Resting spore is a zygospore
+Kingdom: Fungi,Eumycota,Division: Ascomycota,,"Produce sexual spores, ascospores, in asci. Produce nonmotile asexual spores (conidia)"
+Kingdom: Fungi,Eumycota,Division: Basidiomycota,,"Produce sexual spores, basidiospores, externally on a basidium"

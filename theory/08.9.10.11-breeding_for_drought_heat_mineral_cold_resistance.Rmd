@@ -46,11 +46,23 @@ theme_set(theme_bw())
 
 # Breeding for Drought resistance
 
+- Refer to Chapter 7 on 'Breeding soybeans for drought resistance', Plant Breeding Reviews, Volume 4.
+- Refer to Chapter 2 on 'Phenotyping, genetic dissection, and breeding for drought and heat tolerance in common wheat: Status and prospects', Plant Breeding Reviews, Volume 36.
+- Refer to Chapter 3 on 'Genetic enhancement for drought tolerance in sorghum', Plant Breeding Reviews, Volume 31.
+
 # Breeding for Heat resistance
+
+- Refer to Chapter 5 on 'Breeding for heat tolerance', Plant Breeding Reviews, Volume 7.
 
 # Breeding for Mineral stresses
 
+##
+
+- Refer to Molecular mechanisms of plant adapation to phosphate deficiency, Chapter 7, Plant Breeding Reviews, Volume 29.
+
 # Breeding for Cold resistance
+
+- Refer to Chapter 5 on 'In vitro adaptation for drought and cold hardiness in wheat'. 
 
 ##
 
@@ -59,6 +71,15 @@ theme_set(theme_bw())
   - Copper: Drooping of leaves
   - Magnesium: Pink disease
 - Refer to comprehensive crap ag (page 198) for description of role of mineral/nutrients and their deficiencies and toxicities.
+
+# A listing of major works on breeding for abiotic stress tolerance
+
+##
+
+- Refer to following texts references:
+  - Chapter 19 on Breeding for Abiotic Stress Adaptation, @priyadarshan2019plant
+  - Chapter 17 on Genetically Modified Crops, @bradshaw2016genetically
+  - Enhancing Abiotic Stress Tolerance in Cereals Through Breeding and Transgenic Intervention, Chapter 2, Plant Breeding Reviews, Volume 33.
 
 # Bibliography
 

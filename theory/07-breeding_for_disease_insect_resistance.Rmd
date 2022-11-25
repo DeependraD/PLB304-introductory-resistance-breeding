@@ -87,12 +87,58 @@ cat("\\vspace{-0.4cm}")
 
 # Breeding for Disease Resistance
 
+##
+
+\small
+- To address ever evolving relationship between host-pathogen interaction, resistance breeding programmes systematically test wild relatives, landraces and other germplasm to identify new genetic sources of resistance to important pests and pathogens.
+- Simple resistance (based on single gene) can be effective in short term, but successful long term resistance requires dealing with genetic complexity.
+- Effective disease resistance depends on phenomena thay play out at level of genes, genotypes and populations.
+- Gene and genomic loci conferring resistance can be assessed in terms of the strength of their effect, their race specificity and their potential contribution towards durability.
+- At genotype level, performance of resistance is influenced by the number of resistance genes and their specific combination in host
+  - indirect effects on valued traits also need to be taken into account
+- At population level, effects on the durability of resistance and the spread of disease need to be considered
+
+(\footnotesize Based on a Review article by @nelson2018navigating)
+
+##
+
+\small
+- Plant breeders prefer broad-spectrum (race-nonspecific) resistance conferred by QRLs.
+- Genes conferring multiple disease resistance (MDR) are much valued -- they tend also to be durable.
+  \bitemize
+  \footnotesize
+  \item Causal genes for MDR are not clearly identified
+  \item But, either genetic linkage or pleiotropy have roles in MDR
+  \item Single pleiotropic gene or tightly linked genes can be moved between cultivars through traditional breeding
+  \item example: \textit{LR34} (encodes an ATP-binding cassette transporter rather than an NLR and provides incomplete resistance; \alert{it can actually be considered to be a strong QRL}) in wheat condition such resistance
+  \eitemize
+- Combining multiple R-genes and/or QRLs into a single genome usually improves its resistance phenotype -- an approach called gene pyramiding.
+
+```{r diff-qrl-pyramid}
+tribble(
+  ~"QRL", ~"Gene pyramid",
+  "QRL are generally additive in effect, although non-additive effects are also sometimes observed", "Pyramiding of R-genes can improve the spectrum of resistance; genes with complementary resistance spectra can be selected such that gene pyramids provide resistance to a broad set of pathogen races") %>% 
+  knitr::kable(booktabs = TRUE, caption = "Difference between gene pyramid and QRL") %>% 
+  kableExtra::kable_styling(position = "center", font_size = 6) %>% 
+  kableExtra::column_spec(column = 1:2, width = c("24em", "30em"))
+```
+
+
 ## Epidemiology and forcasting
 
 ```{r rust-epidemiology-network, fig.cap="A early-warning system to improve preparedness and resilience to emerging rust diseases on wheat, based on Europe by monitoring rust populations -- identification, and investigation of virulence, agressiveness and adaptation to warmer temperatures.", out.width="95%"}
 knitr::include_graphics("../images/rust_epidemiology_networking_forcasting.png")
 ```
 
+# A listing of major works on breeding for disease and insects
+
+##
+
+- Refer to following texts references:
+  - Chapter 18 on Host Plant Resistance Breeding, @priyadarshan2019plant
+  - Chapter 17 on Genetically Modified Crops (@bradshaw2016genetically) and Chapter 18 on Climate Change and Resistance to Pests and Diseases (bradshaw2016climate).
+  - Breeding for disease resistance in potato, Plant Breeding Reviews, Volume 19.
+  - Breeding for resistance to maize foliar pathogens, Plant Breeding Reviews, Chapter 3, Volume 27.
 
 # Bibliography
 

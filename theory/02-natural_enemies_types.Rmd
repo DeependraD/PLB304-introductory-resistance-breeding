@@ -56,12 +56,16 @@ options(kableExtra.latex.load_packages = FALSE)
 
 ##
 
+\bcolumns
+\column{0.5\textwidth}
+
 ```{r natural-enemy-classification}
 tribble(
   ~"Taxonomic group", ~"Enemy group", ~"Effect on plant", 
   "Virus", "Pathogen", "Disease infection",
   "Phytoplasma", "Pathogen", "Disease infection",
   "Fungus", "Pathogen", "Disease infection",
+  "Fungus", "Parasite", "Disease infection",
   "Higher plant", "Parasite", "Infestation",
   "Nematode", "Parasite", "Infestation",
   "Insect", "Parasite", "Infestation",
@@ -69,10 +73,53 @@ tribble(
   "Snail and slug", "Herbivores", "Infestation",
   "Vertebrate", "Herbivores", "Biting damage"
 ) %>% 
+  relocate(`Effect on plant`, .before = 1) %>% 
   knitr::kable(booktabs = TRUE, caption = "Taxonomic group of organisms and nature of damage to crops", longtable = TRUE) %>% 
-  kableExtra::kable_styling(latex_options = "striped", font_size = 8)
+  kableExtra::kable_styling(latex_options = "striped", font_size = 6) %>% 
+  kableExtra::collapse_rows(columns = 1:2, row_group_label_position = "identity")
 ```
 
+\column{0.5\textwidth}
+
+```{r, out.width="80%"}
+knitr::include_graphics("../images/biomass_of_life.jpg")
+```
+
+\ecolumns
+
+## Distinction of stages of variation in plants and pathogens 
+
+Refer to Page 134, @agrios2005plant.
+
+## Identification of physiological races and pathotypes
+
+\footnotesize
+- Concepts of physiological races was introduced by Barrus in 1911.
+- To identify and distinguish different species of a pathogen and races/strains within a species 'differential hosts' are used.
+\begin{description}
+\small
+\item[Differential host] are the varieties of host species used to identify physiological races of a pathogen or sets of plant cultivars used to define pathotypes of pathogen based on known susceptible and resistant reactions
+\end{description}
+
+- Maximum number of races identifiable with $n$ number of differential hosts is given by relation,
+
+$$
+\small
+\text{Number of races identifiable} = r^n
+$$
+
+- Where,
+  \begin{itemize}
+  \item $r$ = number of reaction types identifiable (e.g. resistant or susceptible, or others.)
+  \end{itemize}
+- If only two types of host-pathogen reaction are recorded (i.e. resistant and susceptible), a set of $n$ ideal differentials would identify $2^n$ physiological races. 
+- Ideally, each of the differential hosts should posses a single resistance gene different from those present in the others.
+
+##
+
+...
+
+(Also refer to Chapter 10, Host-parasite genetics, Plant Breeding Reviews, Volume 5.)
 
 ## Insects and Diseases of Major Crops in Nepal
 
@@ -91,9 +138,52 @@ tibble::tribble(
 
 # Diseases
 
-## Pathogenic fungi
+##
 
-- Most belong to phyla Ascomycota and Basidiomycota
+```{r fungal-pseudo-fungal-classification}
+read_csv("../data/fungal_pseudo_fungal_classification.csv", skip = 1) %>% 
+  knitr::kable(format = "latex", booktabs = TRUE, caption = "Classification of fungi and fungal-like organisms that cause disease on plants.", escape = TRUE) %>% 
+  kableExtra::kable_styling(font_size = 4) %>% 
+  kableExtra::collapse_rows(columns = 1:2, row_group_label_position = "identity") %>% 
+  kableExtra::column_spec(column = 1:5, width = c("10em", "18em", "16em", "12em", "28em")) 
+```
+
+
+(\scriptsize For a more descriptive classification refer to @agrios2005plant, section on Classification of plant pathogenic fungi, Chapter 11 -- Plant diseases caused by fungi.)
+
+##
+
+```{r, out.width="80%", fig.align='center'}
+knitr::include_graphics("../images/wiki_opisthokonta.png")
+```
+
+##
+
+\bcolumns
+\column{0.6\textwidth}
+
+```{r phytophthora-infestans-life-cycle, fig.cap="Life cycle of phytophthora infestans", out.width="90%"}
+knitr::include_graphics("../images/Phytophthora_infestans_on_potato.png")
+```
+
+\column{0.4\textwidth}
+```{r phytophthora-infestans-reproduction, out.width="80%"}
+knitr::include_graphics("../images/Phytophtora_reproduction.png")
+```
+
+```{r phytophthora-infestans-symptom, out.width="80%"}
+knitr::include_graphics("../images/Late_blight_on_potato_leaf.jpg")
+```
+
+\ecolumns
+
+##
+
+<!-- ```{r slime-mold, fig.cap="Aethalium of a slime mold (\\textit{Fuligo septica})"} -->
+<!-- knitr::include_graphics("../images/slime_mold.jpg") -->
+<!-- ``` -->
+
+- Most pathogenic fungi belong to phyla Ascomycota and Basidiomycota
 - Fungi reproduce both sexually and asexually via the production of spores and other structures
 - Basidiomycetes
   - produce sexual spores called basidiospores, on a club-shaped spore-producing structure called a basidium
@@ -103,6 +193,40 @@ tibble::tribble(
   - karyogamy and meiosis proceed in the basidia and basidiospores are produced
   - basidiomycetous hyphae, which have an electron-dense (multi-layered or visually single-layered) wall, are divided by septa into mononucleate, binucleate, or multinucleate segments
   - according to Ainsworth and Bisby's Dictionary of Fungi (2008), there are 1589 genera and more than 30,000 species of Basidiomycoa (32% of all described fungal taxa)
+
+##
+
+- Ascomycota
+  \begin{itemize}
+  \footnotesize
+  \item 98\% of lichens have an Ascomycota as the fungal part (symbiotic association) of the lichen.
+  \item 2000 identified genera and 30,000 species of Ascomycota. Most ascomycetes are terrestrial or parasitic. However, some have adapted to marine or freshwater environments.
+  \item Presence of a reproductive structure known as the ascus, though in some cases it has a reduced role in the life cycle.
+  \item Used as yeasts in baking/brewing and treated as delicacies as truffles and morels. The mold Penicillium is used to produce the antibiotic penicillin.
+  \item Many cause tree diseases, such as Dutch elm disease and apple blights. Some of the plant pathogenic ascomycetes are apple scab, rice blast, the ergot fungi, black knot, and the powdery mildews.
+  \item Morels (a highly prized edible fungi) form important mycorrhizal relationships with plants, thereby providing enhanced water and nutrient uptake and, in some cases, protection from insects.
+  \item The cell walls of the hyphae are variably composed of chitin and $\beta$-glucans, just as in Basidiomycota. However, these fibers are set in a matrix of glycoprotein containing the sugars galactose and mannose.
+  \item The mycelium of ascomycetes is usually made up of septate hyphae. However, there is not necessarily any fixed number of nuclei in each of the divisions.
+  \item The septal walls have septal pores which provide cytoplasmic continuity throughout the individual hyphae. Under appropriate conditions, nuclei may also migrate between septal compartments through the septal pores.
+  \item A unique character (but not present in all ascomycetes) is the presence of Woronin bodies on each side of the septa separating the hyphal segments which control the septal pores.
+  \end{itemize}
+
+<!-- ## -->
+
+<!-- ```{r} -->
+<!-- # Refer to this image (source: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Conidia_Formation.png/501px-Conidia_Formation.png) for in-figure text description -->
+<!-- knitr::include_graphics("../images/ascomycete_conidia_Formation.png") -->
+<!-- ``` -->
+
+<!-- ```{r conidiophore-structure, fig.cap="Conidophores of \\textit{P. hyoscyami} f.sp. \\textit{tabacina}. Conidiophores with this pathogen are dichotomous branched, eventually end with two teeth or sterigmata and on each sterigma is formed one conidia."} -->
+<!-- knitr::include_graphics("../images/Conidophores_of_Peronospora_tabacina.jpg") -->
+<!-- ``` -->
+
+##
+
+```{r life-cycle-plant-pathogenic-fungi, fig.cap="Schematic representation of the genralized life cycles of oomycetes and the main groups of phytopathogenic fungi.", out.width="72%"}
+knitr::include_graphics("../images/generalized_life_cycle_pathogenic_fungi.PNG")
+```
 
 ## Rust and smut
 
@@ -127,44 +251,43 @@ tibble::tribble(
 - _Puccinia melanocephala_ (Brown Rust of Sugarcane)
 - _Puccinia kuehnii_ (Orange rust of Sugarcane)
 
+<!-- ## -->
 
-##
+<!-- - There are five spore stages that are produced and two hosts are required (heteroecious species) in the completion: -->
+<!--   - Stage 0:Spermagonium -->
+<!--     - Flask shaped structure containing haploid spermatia (male gamete) and receptive hyphae -->
+<!--     - Spermatia fertilize receptive hyphae of the compatible mating type and subsequent production of dikaryotic mycelium. -->
+<!--     - Produces (on upper surface of the barberry leaf) sex organs in rust -->
+<!--     - Are of two mating types (due to being derived from basidiospores) -->
+<!--   - Stage I: Aecium -->
+<!--     - When spermatia are transferred to compatible receptive hyphae, this begins the dikaryotic stage of the life cycle and directly produces the aecium on the lower surface of the barberry leaf -->
+<!--     - Chains of aeciospores (which burst through the lower surface of the leaf) are formed in aecium -->
+<!--   - Stage II: Uredium -->
+<!--     - Can attack and infect host plants -->
+<!--   - Stage III: Telium -->
+<!--     - Teliospores serve only as the sexual, overwintering stage  -->
+<!--   - Stage IV: Basidium -->
+<!--     - Heterothallic and basidia produce basidiospores that are of two mating types -->
+<!--     - Basidiospores are capable of only infecting the leaves of \textit{Berberis} sp. (barberry) -->
+<!--     - Cells of the teliospore germinates to produce a short germ tube that will develop into a basidium that is essentially transversely septate -->
 
-- There are five spore stages that are produced and two hosts are required (heteroecious species) in the completion:
-  - Stage 0:Spermagonium
-    - Flask shaped structure containing haploid spermatia (male gamete) and receptive hyphae
-    - Spermatia fertilize receptive hyphae of the compatible mating type and subsequent production of dikaryotic mycelium.
-    - Produces (on upper surface of the barberry leaf) sex organs in rust
-    - Are of two mating types (due to being derived from basidiospores)
-  - Stage I: Aecium
-    - When spermatia are transferred to compatible receptive hyphae, this begins the dikaryotic stage of the life cycle and directly produces the aecium on the lower surface of the barberry leaf
-    - Chains of aeciospores (which burst through the lower surface of the leaf) are formed in aecium
-  - Stage II: Uredium
-    - Can attack and infect host plants
-  - Stage III: Telium
-    - Teliospores serve only as the sexual, overwintering stage 
-  - Stage IV: Basidium
-    - Heterothallic and basidia produce basidiospores that are of two mating types
-    - Basidiospores are capable of only infecting the leaves of \textit{Berberis} sp. (barberry)
-    - Cells of the teliospore germinates to produce a short germ tube that will develop into a basidium that is essentially transversely septate
+<!-- ## -->
 
-##
+<!-- \begin{columns}[T, onlytextwidth] -->
+<!-- \column{0.35\textwidth} -->
 
-\begin{columns}[T, onlytextwidth]
-\column{0.35\textwidth}
+<!-- ```{r rust-spores-structures, fig.cap="Kinds and sequence of spores and spore-producing structures in rust fungi along with the nuclear condition of each. (Myc: Mycelium)", out.width="90%"} -->
+<!-- knitr::include_graphics("../images/spores_rust_fungi.PNG") -->
+<!-- ``` -->
 
-```{r rust-spores-structures, fig.cap="Kinds and sequence of spores and spore-producing structures in rust fungi along with the nuclear condition of each. (Myc: Mycelium)", out.width="90%"}
-knitr::include_graphics("../images/spores_rust_fungi.PNG")
-```
+<!-- \column{0.65\textwidth} -->
 
-\column{0.65\textwidth}
+<!-- ```{r asexual-structures-fungi, fig.cap="Asexual complex multicellular structures produced by fungi in the Pucciniomycotina (spermogonium, aecium) and Ascomycota (acervulus, pycnidium, sporodochium, coremium = synnemata). Note that these structures, like all complex multicellular structures, have a genetically determined shape and size and a tightly integrated developmental program. Plant tissue is shaded in green.", out.width="85%"} -->
+<!-- # pdftools::pdf_convert("../literatures/nagy2018.pdf", format = "png", pages = 5, filenames = "../images/asexual_multicellular_structures_fungi.png", dpi = 250) -->
+<!-- knitr::include_graphics("../images/asexual_multicellular_structures_fungi.png") -->
+<!-- ``` -->
 
-```{r asexual-structures-fungi, fig.cap="Asexual complex multicellular structures produced by fungi in the Pucciniomycotina (spermogonium, aecium) and Ascomycota (acervulus, pycnidium, sporodochium, coremium = synnemata). Note that these structures, like all complex multicellular structures, have a genetically determined shape and size and a tightly integrated developmental program. Plant tissue is shaded in green.", out.width="85%"}
-# pdftools::pdf_convert("../literatures/nagy2018.pdf", format = "png", pages = 5, filenames = "../images/asexual_multicellular_structures_fungi.png", dpi = 250)
-knitr::include_graphics("../images/asexual_multicellular_structures_fungi.png")
-```
-
-\end{columns}
+<!-- \end{columns} -->
 
 ##
 
@@ -273,6 +396,12 @@ knitr::include_graphics("../images/FRruRoiX0AE_dF0.jpeg")
 knitr::include_graphics("../images/Fa1rQDGWAAAa8pu.jpeg")
 ```
 
+## Life cycle of Smut
+
+```{r}
+# Figure 1 of Molecular Interactions Between Smut Fungi and Their Host Plants
+```
+
 
 ## Fusarium
 
@@ -355,6 +484,53 @@ knitr::include_graphics("../images/citrus_peel_for_blast_control.jpg")
 
 ```{r rice-hoja-blanca-virus, fig.cap="Rice hoja blanca virus", out.width="25%"}
 knitr::include_graphics("../images/rice_hoja_blanca_virus.jpg")
+```
+
+# Mechanisms of infection
+
+\footnotesize
+- Pathogens act in a variety of pathways to cause infection
+- In pathogens that show a high level of gene flow, greater genetic diversity exists
+- In pathogens reproducing asexually (with no recombination),  entire genotypes are transferred from one population to another -- phenomena called genotype flow
+- Hardy spores or propagules (rust and powdery mildew) can spread over long distances, sometimes encompassing entire continents.
+- Soil-borne fungi and nematodes move slowly and are present in small areas.
+- Gene flow reduces genetic differences between populations, preventing delays in drastic evolution of the population in different geographical areas.
+- Population size affects phenomena such as mutation, genetic drift and selection
+  \begin{itemize}
+  \footnotesize
+  \item $\Uparrow$ population size $\thicksim$ $\Uparrow$ mutants alleles are conserved
+  \item $\Uparrow$ population size $\thicksim$ $\Uparrow$ rare alleles are preserved under genetic drift 
+  \end{itemize}
+
+##
+
+```{r infection-mechanism-extracellular, fig.cap="Resistance mechanisms at the tissue level. At the organismal and tissue levels, the success of a pathogen can be influenced by a range of features of the morphology, biochemistry and microbiome of the plant.", out.width="80%"}
+# pdftools::pdf_convert("../literatures/nelson2017.pdf",
+#                       format = "png", pages = 6,
+#                       filenames = "../images/infection_process_plants.png",
+#                       dpi = 600)
+knitr::include_graphics("../images/infection_process_plants_extracellular.png")
+```
+
+##
+
+```{r infection-mechanism-intracellular, fig.cap="At cellular level, factors that affect the ability of a pathogen to infect its plant host include defence responses triggered by recognition events in the host via PRRs, such as WAKs or RLKs, and resistance proteins (R-proteins), such as NLR proteins, nutrient availability in the apoplast and cytoplasm; pre-existing chemical factors; and cell wall constitution. These factors are affected by host genotype and are potential causes of quantitative variation. Qualitative variation in resistance usually, though not always, occurs at the level of resistance gene-effector interactions.", out.width="78%"}
+# pdftools::pdf_convert("../literatures/nelson2017.pdf",
+#                       format = "png", pages = 6,
+#                       filenames = "../images/infection_process_plants.png",
+#                       dpi = 600)
+knitr::include_graphics("../images/infection_process_plants_intracellular.png")
+```
+
+# Genome comparisons of plant pathogens (filamentous)
+
+##
+
+```{r pathogenic-fungi-genome-compare, fig.cap="Main features of sequenced filamentous plant pathogen genomes. Filamentous eukaryotic plant pathogens belong to either the fungi or the stramenopiles (oomycetes). The representative phylogeny depicts filamentous plant pathogens with sequenced genomes and has been generated using iTOL with NCBI taxonomy identifiers (branch lengths are arbitrary). Isolate identifier, or the number of isolates sequenced, is indicated next to the species name. Pathogen lifestyles and major variations in gene families are indicated along the tree branches. The principal host plants, genome size, main insights gained from genome comparisons, number of predicted protein-coding genes and repetitive DNA content (as a percentage of genome size) are shown next to the tree branches. CDC, conditionally dispensible chromosome; chr., chromosome; CNV, copy number variation; CRN, Crinkler; CWDE, cell wall-degrading enzyme; GPCR, G protein coupled receptor; GSR, gene-sparse region; incl., including; LS, lineage-specific; ND, not determined; NRPS, non-ribosomal peptide synthetase; P/A, presence/absence; PKS, polyketide synthase; pos. sel., positive selection; rec., recombination; RIP, repeat-induced point; SMB, secondary metabolite biosynthesis; SNPs, single-nucleotide polymorphisms; SSP, small secreted protein; TE, transposable element", out.width="40%"}
+# pdftools::pdf_convert("../literatures/NatureRevMicro_2012.pdf",
+                      # format = "png", pages = 3, dpi = 250,
+                      # filenames = "../images/genome_comparison_pathogenic_fungi.png")
+knitr::include_graphics("../images/genome_comparison_pathogenic_fungi.png")
 ```
 
 
